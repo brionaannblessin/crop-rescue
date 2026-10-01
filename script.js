@@ -2217,6 +2217,7 @@ if (!gameEnded) {
         completeFarm();
     }, 1500);
 }
+            
         }
     }
     
@@ -3251,6 +3252,7 @@ if (!gameEnded) {
     }, 1500);
 
 }
+}
 
 function startBiomassBaling() {
 
@@ -3814,7 +3816,7 @@ function setDefaultGameDate() {
 
 
 
-setDefaultGameDate();}
+setDefaultGameDate();
 
 function startBurnGame() {
 
