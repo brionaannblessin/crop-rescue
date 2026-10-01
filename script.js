@@ -2138,48 +2138,6 @@ function startMulchingGame() {
         }, { passive: false });
 
     });
-            function stopDragging() {
-
-                piece.style.cursor = "grab";
-
-                try {
-                    piece.releasePointerCapture(event.pointerId);
-                } catch (e) {}
-
-                piece.removeEventListener(
-                    "pointermove",
-                    movePiece
-                );
-
-                piece.removeEventListener(
-                    "pointerup",
-                    stopDragging
-                );
-
-                piece.removeEventListener(
-                    "pointercancel",
-                    stopDragging
-                );
-
-                checkMulchingComplete();
-            }
-
-            piece.addEventListener(
-                "pointermove",
-                movePiece
-            );
-
-            piece.addEventListener(
-                "pointerup",
-                stopDragging
-            );
-
-            piece.addEventListener(
-                "pointercancel",
-                stopDragging
-            );
-
-}
 
                     function stopDragging() {
 
