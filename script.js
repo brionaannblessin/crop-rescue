@@ -2013,117 +2013,151 @@ function startMulchingGame() {
 
     function enableResidueDragging() {
 
-    const field = document.getElementById("farmField");
-    const pieces = field.querySelectorAll(".crop-residue");
+        const pieces =
+            field.querySelectorAll(
+                ".crop-residue"
+            );
 
-    // Stop the phone from scrolling while playing the dragging game
-    field.style.touchAction = "none";
-    field.style.overscrollBehavior = "none";
 
-    pieces.forEach(piece => {
+        pieces.forEach(piece => {
 
-        if (piece.dataset.dragEnabled === "true") return;
-
-        piece.dataset.dragEnabled = "true";
-
-        piece.style.pointerEvents = "auto";
-        piece.style.touchAction = "none";
-        piece.style.userSelect = "none";
-        piece.style.webkitUserSelect = "none";
-
-        piece.addEventListener("pointerdown", function(event) {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            const fieldRect = field.getBoundingClientRect();
-            const pieceRect = piece.getBoundingClientRect();
-
-            const offsetX = event.clientX - pieceRect.left;
-            const offsetY = event.clientY - pieceRect.top;
-
-            let dragging = true;
-
-            piece.style.cursor = "grabbing";
-            piece.style.zIndex = "999";
-
-            try {
-                piece.setPointerCapture(event.pointerId);
-            } catch (e) {}
-
-            function movePiece(e) {
-
-                if (!dragging) return;
-
-                e.preventDefault();
-                e.stopPropagation();
-
-                let x =
-                    e.clientX -
-                    fieldRect.left -
-                    offsetX;
-
-                let y =
-                    e.clientY -
-                    fieldRect.top -
-                    offsetY;
-
-                x = Math.max(
-                    0,
-                    Math.min(
-                        x,
-                        fieldRect.width - pieceRect.width
-                    )
-                );
-
-                y = Math.max(
-                    0,
-                    Math.min(
-                        y,
-                        fieldRect.height - pieceRect.height
-                    )
-                );
-
-                piece.style.left = `${x}px`;
-                piece.style.top = `${y}px`;
-                piece.style.right = "auto";
-                piece.style.bottom = "auto";
+            if (
+                piece.dataset.dragEnabled === "true"
+            ) {
+                return;
             }
 
-            function stopDragging(e) {
 
-                dragging = false;
+            piece.dataset.dragEnabled =
+                "true";
 
-                piece.style.cursor = "grab";
-                piece.style.zIndex = "150";
+            piece.style.pointerEvents =
+                "auto";
 
-                try {
-                    piece.releasePointerCapture(e.pointerId);
-                } catch (err) {}
+            piece.style.cursor =
+                "grab";
 
-                piece.removeEventListener(
-                    "pointermove",
-                    movePiece
-                );
 
-                piece.removeEventListener(
-                    "pointerup",
-                    stopDragging
-                );
+            piece.addEventListener(
+                "pointerdown",
+                function(event) {
 
-                piece.removeEventListener(
-                    "pointercancel",
-                    stopDragging
-                );
+                    event.preventDefault();
 
-                checkMulchingComplete();
-            }
+                    const rect =
+                        field.getBoundingClientRect();
 
-        }, { passive: false });
+                    const pieceRect =
+                        piece.getBoundingClientRect();
 
-    });
+                    const offsetX =
+                        event.clientX -
+                        pieceRect.left;
 
-                    
+                    const offsetY =
+                        event.clientY -
+                        pieceRect.top;
+
+
+                    piece.style.cursor =
+                        "grabbing";
+
+                    piece.setPointerCapture(
+                        event.pointerId
+                    );
+
+
+                    function movePiece(e) {
+
+                        let x =
+                            e.clientX -
+                            rect.left -
+                            offsetX;
+
+                        let y =
+                            e.clientY -
+                            rect.top -
+                            offsetY;
+
+
+                        x =
+                            Math.max(
+                                0,
+                                Math.min(
+                                    x,
+                                    rect.width -
+                                    pieceRect.width
+                                )
+                            );
+
+
+                        y =
+                            Math.max(
+                                0,
+                                Math.min(
+                                    y,
+                                    rect.height -
+                                    pieceRect.height
+                                )
+                            );
+
+
+                        piece.style.left =
+                            `${x}px`;
+
+                        piece.style.top =
+                            `${y}px`;
+
+                        piece.style.right =
+                            "auto";
+
+                        piece.style.bottom =
+                            "auto";
+                    }
+
+
+                    function stopDragging() {
+
+                        piece.style.cursor =
+                            "grab";
+
+                        piece.removeEventListener(
+                            "pointermove",
+                            movePiece
+                        );
+
+                        piece.removeEventListener(
+                            "pointerup",
+                            stopDragging
+                        );
+
+                        piece.removeEventListener(
+                            "pointercancel",
+                            stopDragging
+                        );
+
+                        checkSpreadProgress();
+                    }
+
+
+                    piece.addEventListener(
+                        "pointermove",
+                        movePiece
+                    );
+
+                    piece.addEventListener(
+                        "pointerup",
+                        stopDragging
+                    );
+
+                    piece.addEventListener(
+                        "pointercancel",
+                        stopDragging
+                    );
+                }
+            );
+        });
+    }
 
 
     function checkSpreadProgress() {
@@ -2217,7 +2251,6 @@ if (!gameEnded) {
         completeFarm();
     }, 1500);
 }
-            
         }
     }
     
@@ -3181,7 +3214,7 @@ function transformToFinalPellets() {
         pellet.style.transition =
             "all 1s ease";
 
-        pellet.style.transform =
+                    pellet.style.transform =
             "scale(1.25)";
 
         setTimeout(() => {
@@ -3251,7 +3284,6 @@ if (!gameEnded) {
         completeFarm();
     }, 1500);
 
-}
 }
 
 function startBiomassBaling() {
@@ -3816,7 +3848,7 @@ function setDefaultGameDate() {
 
 
 
-setDefaultGameDate();
+setDefaultGameDate();}
 
 function startBurnGame() {
 
@@ -5105,7 +5137,7 @@ async function sendAIMessage() {
     try {
 
         const response = await fetch(
-            "https://crop-rescue.onrender.com/api/chat",
+            "https://crop-rescue.onrender.com",
             {
                 method: "POST",
 
@@ -5174,4 +5206,3 @@ function scrollToResearchContent() {
 
     }
 }
-
