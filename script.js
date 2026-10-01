@@ -2014,8 +2014,11 @@ function startMulchingGame() {
     function enableResidueDragging() {
 
     const field = document.getElementById("farmField");
-
     const pieces = field.querySelectorAll(".crop-residue");
+
+    // Stop the phone from scrolling while playing the dragging game
+    field.style.touchAction = "none";
+    field.style.overscrollBehavior = "none";
 
     pieces.forEach(piece => {
 
@@ -2024,12 +2027,14 @@ function startMulchingGame() {
         piece.dataset.dragEnabled = "true";
 
         piece.style.pointerEvents = "auto";
-        piece.style.cursor = "grab";
         piece.style.touchAction = "none";
+        piece.style.userSelect = "none";
+        piece.style.webkitUserSelect = "none";
 
         piece.addEventListener("pointerdown", function(event) {
 
             event.preventDefault();
+            event.stopPropagation();
 
             const fieldRect = field.getBoundingClientRect();
             const pieceRect = piece.getBoundingClientRect();
@@ -2037,13 +2042,21 @@ function startMulchingGame() {
             const offsetX = event.clientX - pieceRect.left;
             const offsetY = event.clientY - pieceRect.top;
 
-            piece.style.cursor = "grabbing";
+            let dragging = true;
 
-            piece.setPointerCapture(event.pointerId);
+            piece.style.cursor = "grabbing";
+            piece.style.zIndex = "999";
+
+            try {
+                piece.setPointerCapture(event.pointerId);
+            } catch (e) {}
 
             function movePiece(e) {
 
+                if (!dragging) return;
+
                 e.preventDefault();
+                e.stopPropagation();
 
                 let x =
                     e.clientX -
@@ -2077,6 +2090,55 @@ function startMulchingGame() {
                 piece.style.bottom = "auto";
             }
 
+            function stopDragging(e) {
+
+                dragging = false;
+
+                piece.style.cursor = "grab";
+                piece.style.zIndex = "150";
+
+                try {
+                    piece.releasePointerCapture(e.pointerId);
+                } catch (err) {}
+
+                piece.removeEventListener(
+                    "pointermove",
+                    movePiece
+                );
+
+                piece.removeEventListener(
+                    "pointerup",
+                    stopDragging
+                );
+
+                piece.removeEventListener(
+                    "pointercancel",
+                    stopDragging
+                );
+
+                checkMulchingComplete();
+            }
+
+            piece.addEventListener(
+                "pointermove",
+                movePiece,
+                { passive: false }
+            );
+
+            piece.addEventListener(
+                "pointerup",
+                stopDragging
+            );
+
+            piece.addEventListener(
+                "pointercancel",
+                stopDragging
+            );
+
+        }, { passive: false });
+
+    });
+}
             function stopDragging() {
 
                 piece.style.cursor = "grab";
