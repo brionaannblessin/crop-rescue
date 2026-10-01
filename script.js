@@ -2180,8 +2180,6 @@ function startMulchingGame() {
             );
 
         });
-
-    });
 }
 
                     function stopDragging() {
