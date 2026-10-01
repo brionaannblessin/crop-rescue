@@ -4286,3 +4286,8 @@ body {
     }
 
 }
+
+#farmField {
+    touch-action: none;
+    overscroll-behavior: contain;
+}
