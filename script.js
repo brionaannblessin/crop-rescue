@@ -2119,68 +2119,11 @@ function startMulchingGame() {
                 checkMulchingComplete();
             }
 
-            piece.addEventListener(
-                "pointermove",
-                movePiece,
-                { passive: false }
-            );
-
-            piece.addEventListener(
-                "pointerup",
-                stopDragging
-            );
-
-            piece.addEventListener(
-                "pointercancel",
-                stopDragging
-            );
-
         }, { passive: false });
 
     });
 
-                    function stopDragging() {
-
-                        piece.style.cursor =
-                            "grab";
-
-                        piece.removeEventListener(
-                            "pointermove",
-                            movePiece
-                        );
-
-                        piece.removeEventListener(
-                            "pointerup",
-                            stopDragging
-                        );
-
-                        piece.removeEventListener(
-                            "pointercancel",
-                            stopDragging
-                        );
-
-                        checkSpreadProgress();
-                    }
-
-
-                    piece.addEventListener(
-                        "pointermove",
-                        movePiece
-                    );
-
-                    piece.addEventListener(
-                        "pointerup",
-                        stopDragging
-                    );
-
-                    piece.addEventListener(
-                        "pointercancel",
-                        stopDragging
-                    );
-                }
-            );
-        });
-    }
+                    
 
 
     function checkSpreadProgress() {
