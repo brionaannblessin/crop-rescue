@@ -2013,108 +2013,115 @@ function startMulchingGame() {
 
     function enableResidueDragging() {
 
-        const pieces =
-            field.querySelectorAll(
-                ".crop-residue"
-            );
+    const field = document.getElementById("farmField");
 
+    const pieces = field.querySelectorAll(".crop-residue");
 
-        pieces.forEach(piece => {
+    pieces.forEach(piece => {
 
-            if (
-                piece.dataset.dragEnabled === "true"
-            ) {
-                return;
+        if (piece.dataset.dragEnabled === "true") return;
+
+        piece.dataset.dragEnabled = "true";
+
+        piece.style.pointerEvents = "auto";
+        piece.style.cursor = "grab";
+        piece.style.touchAction = "none";
+
+        piece.addEventListener("pointerdown", function(event) {
+
+            event.preventDefault();
+
+            const fieldRect = field.getBoundingClientRect();
+            const pieceRect = piece.getBoundingClientRect();
+
+            const offsetX = event.clientX - pieceRect.left;
+            const offsetY = event.clientY - pieceRect.top;
+
+            piece.style.cursor = "grabbing";
+
+            piece.setPointerCapture(event.pointerId);
+
+            function movePiece(e) {
+
+                e.preventDefault();
+
+                let x =
+                    e.clientX -
+                    fieldRect.left -
+                    offsetX;
+
+                let y =
+                    e.clientY -
+                    fieldRect.top -
+                    offsetY;
+
+                x = Math.max(
+                    0,
+                    Math.min(
+                        x,
+                        fieldRect.width - pieceRect.width
+                    )
+                );
+
+                y = Math.max(
+                    0,
+                    Math.min(
+                        y,
+                        fieldRect.height - pieceRect.height
+                    )
+                );
+
+                piece.style.left = `${x}px`;
+                piece.style.top = `${y}px`;
+                piece.style.right = "auto";
+                piece.style.bottom = "auto";
             }
 
+            function stopDragging() {
 
-            piece.dataset.dragEnabled =
-                "true";
+                piece.style.cursor = "grab";
 
-            piece.style.pointerEvents =
-                "auto";
+                try {
+                    piece.releasePointerCapture(event.pointerId);
+                } catch (e) {}
 
-            piece.style.cursor =
-                "grab";
+                piece.removeEventListener(
+                    "pointermove",
+                    movePiece
+                );
 
+                piece.removeEventListener(
+                    "pointerup",
+                    stopDragging
+                );
+
+                piece.removeEventListener(
+                    "pointercancel",
+                    stopDragging
+                );
+
+                checkMulchingComplete();
+            }
 
             piece.addEventListener(
-                "pointerdown",
-                function(event) {
+                "pointermove",
+                movePiece
+            );
 
-                    event.preventDefault();
+            piece.addEventListener(
+                "pointerup",
+                stopDragging
+            );
 
-                    const rect =
-                        field.getBoundingClientRect();
+            piece.addEventListener(
+                "pointercancel",
+                stopDragging
+            );
 
-                    const pieceRect =
-                        piece.getBoundingClientRect();
+        });
 
-                    const offsetX =
-                        event.clientX -
-                        pieceRect.left;
-
-                    const offsetY =
-                        event.clientY -
-                        pieceRect.top;
-
-
-                    piece.style.cursor =
-                        "grabbing";
-
-                    piece.setPointerCapture(
-                        event.pointerId
-                    );
-
-
-                    function movePiece(e) {
-
-                        let x =
-                            e.clientX -
-                            rect.left -
-                            offsetX;
-
-                        let y =
-                            e.clientY -
-                            rect.top -
-                            offsetY;
-
-
-                        x =
-                            Math.max(
-                                0,
-                                Math.min(
-                                    x,
-                                    rect.width -
-                                    pieceRect.width
-                                )
-                            );
-
-
-                        y =
-                            Math.max(
-                                0,
-                                Math.min(
-                                    y,
-                                    rect.height -
-                                    pieceRect.height
-                                )
-                            );
-
-
-                        piece.style.left =
-                            `${x}px`;
-
-                        piece.style.top =
-                            `${y}px`;
-
-                        piece.style.right =
-                            "auto";
-
-                        piece.style.bottom =
-                            "auto";
-                    }
-
+    });
+}
 
                     function stopDragging() {
 
