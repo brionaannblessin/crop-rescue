@@ -5137,7 +5137,7 @@ async function sendAIMessage() {
     try {
 
         const response = await fetch(
-            "https://crop-rescue.onrender.com",
+            "https://crop-rescue.onrender.com/api/chat",
             {
                 method: "POST",
 
