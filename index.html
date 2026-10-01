@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Crop Rescue</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpeg"
+    href="icon.jpeg">
+</head>
+
+<body>
+
+    <!-- =========================
+     START / FARMER REGISTRATION
+========================== -->
+
+<section id="startScreen" class="screen">
+
+    <div class="start-content">
+
+        <div class="game-logo">
+            🌾
+        </div>
+
+        <h1>Crop Rescue</h1>
+
+        <p class="game-tagline">
+            Save your farm. Protect your soil.<br>
+            Make sustainable choices.
+        </p>
+
+
+        <!-- FARMER REGISTRATION -->
+
+        <div class="player-info-box">
+
+            <div class="registration-header">
+                <span>👨‍🌾</span>
+
+                <div>
+                    <h2>Farmer Registration</h2>
+
+                    <p>
+                        Enter your details before starting your farm.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="playerNameInput">
+                    Farmer Name
+                </label>
+
+                <input
+                    type="text"
+                    id="playerNameInput"
+                    placeholder="Enter your full name"
+                    maxlength="50"
+                    autocomplete="name"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="gameDate">
+                    Farm Date
+                </label>
+
+                <input
+                    type="date"
+                    id="gameDate"
+                >
+
+            </div>
+
+
+            <p
+                id="playerInfoError"
+                class="player-info-error">
+            </p>
+
+
+            <button
+                onclick="registerPlayer()"
+                class="main-button">
+
+                🌱 Start New Farm
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- =========================
+         FARM SCREEN
+    ========================== -->
+
+    <section id="farmScreen" class="screen hidden">
+
+        <!-- GAME HEADER -->
+
+        <header class="game-header">
+
+            <h2>🌾 Crop Rescue</h2>
+
+            <p id="cropName"></p>
+
+            <p id="farmStatus"></p>
+
+            <p id="farmDescription">
+                Take care of your farm and survive the challenges ahead.
+            </p>
+
+        </header>
+
+
+        <!-- =========================
+             FARM STATS
+        ========================== -->
+
+        <div id="statsPanel" class="stats-panel">
+
+            <div class="stat">
+
+                <span>💰</span>
+
+                <span class="stat-name">
+                    Money
+                </span>
+
+                <div class="stat-bar">
+                    <div
+                        id="moneyBar"
+                        class="stat-fill">
+                    </div>
+                </div>
+
+                <span id="moneyStat">
+                    70
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <span>🌱</span>
+
+                <span class="stat-name">
+                    Soil
+                </span>
+
+                <div class="stat-bar">
+                    <div
+                        id="soilBar"
+                        class="stat-fill">
+                    </div>
+                </div>
+
+                <span id="soilStat">
+                    70
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <span>🌫️</span>
+
+                <span class="stat-name">
+                    Air
+                </span>
+
+                <div class="stat-bar">
+                    <div
+                        id="airBar"
+                        class="stat-fill">
+                    </div>
+                </div>
+
+                <span id="airStat">
+                    70
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <span>🌾</span>
+
+                <span class="stat-name">
+                    Productivity
+                </span>
+
+                <div class="stat-bar">
+                    <div
+                        id="productivityBar"
+                        class="stat-fill">
+                    </div>
+                </div>
+
+                <span id="productivityStat">
+                    70
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <span>♻️</span>
+
+                <span class="stat-name">
+                    Sustainability
+                </span>
+
+                <div class="stat-bar">
+                    <div
+                        id="sustainabilityBar"
+                        class="stat-fill">
+                    </div>
+                </div>
+
+                <span id="sustainabilityStat">
+                    70
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             FARM FIELD
+        ========================== -->
+
+        <div
+            id="farmField"
+            class="farm-field">
+
+            <!-- Crops, farmer, pests,
+                 rain, smoke and residue
+                 are created by JavaScript -->
+
+
+            <!-- =========================
+                 COMPOST STATION
+            ========================== -->
+
+            <div
+                id="compostStation"
+                class="compost-hidden">
+
+                <div
+                    class="compost-bin"
+                    id="compostBin">
+
+                    <div class="bin-lid"></div>
+
+                    <div class="bin-body">
+
+                        <div class="bin-logo">
+                            ♻️
+                        </div>
+
+                        <div class="bin-text">
+                            COMPOST
+                        </div>
+
+                        <div
+                            id="compostPile"
+                            class="compost-pile">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="compost-controls">
+
+                    <button
+                        onclick="addCompostIngredient('green', event)">
+
+                        🌿 Green
+
+                    </button>
+
+
+                    <button
+                        onclick="addCompostIngredient('brown', event)">
+
+                        🍂 Brown
+
+                    </button>
+
+
+                    <button
+                        onclick="addCompostIngredient('water', event)">
+
+                        💧 Water
+
+                    </button>
+
+
+                    <button
+                        onclick="addCompostIngredient('air', event)">
+
+                        💨 Air
+
+                    </button>
+
+                </div>
+
+
+                <p id="compostStatus">
+
+                    🌾 Drag the crop residue
+                    into the compost bin first.
+
+                </p>
+
+
+                <button
+                    id="startCompostButton"
+                    onclick="startCompostingProcess()"
+                    disabled>
+
+                    ♻️ Start Composting
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             CROP SELECTION
+        ========================== -->
+
+        <section
+            id="cropScreen"
+            class="screen crop-popup hidden">
+
+            <div class="crop-card">
+
+                <h2>
+                    🌱 Choose Your Crop
+                </h2>
+
+                <p class="instruction">
+                    Your first farming season is about to begin.
+                </p>
+
+
+                <div class="crop-options">
+
+                    <button
+                        class="crop-button"
+                        onclick="chooseCrop('rice')">
+
+                        🌾
+
+                        <strong>
+                            Rice
+                        </strong>
+
+                        <small>
+                            Produces significant crop residue
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        class="crop-button"
+                        onclick="chooseCrop('wheat')">
+
+                        🌾
+
+                        <strong>
+                            Wheat
+                        </strong>
+
+                        <small>
+                            Commonly grown after rice
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        class="crop-button"
+                        onclick="chooseCrop('maize')">
+
+                        🌽
+
+                        <strong>
+                            Maize
+                        </strong>
+
+                        <small>
+                            Useful for biomass production
+                        </small>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EPISODE 1
+             PEST ATTACK
+        ========================== -->
+
+        <div
+            id="episodeScreen"
+            class="episode-screen hidden">
+
+            <div class="episode-card">
+
+                <div class="episode-number">
+                    EPISODE 1
+                </div>
+
+                <h2>
+                    🐛 Pest Infestation!
+                </h2>
+
+                <p>
+                    Pests are attacking your crops!
+                    Act quickly before your harvest is damaged.
+                </p>
+
+
+                <div id="pestChoices">
+
+                    <button
+                        onclick="handlePestChoice('biological')">
+
+                        🌿 Use Biological Pest Control
+
+                    </button>
+
+
+                    <button
+                        onclick="handlePestChoice('flood')">
+
+                        💧 Flood the Field
+
+                    </button>
+
+
+                    <button
+                        onclick="handlePestChoice('ignore')">
+
+                        🙈 Ignore the Pests
+
+                    </button>
+
+                </div>
+
+
+                <p id="pestMessage"></p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             EPISODE 2
+             SOIL EROSION
+        ========================== -->
+
+        <div
+            id="erosionScreen"
+            class="episode-screen hidden">
+
+            <div class="episode-card">
+
+                <div class="episode-number">
+                    EPISODE 2
+                </div>
+
+                <h2>
+                    🌧️ Soil Erosion!
+                </h2>
+
+                <p>
+                    Heavy rain is washing away the fertile topsoil.
+                    Protect your soil before its quality drops!
+                </p>
+
+
+                <div id="erosionChoices">
+
+                    <button
+                        onclick="handleErosionChoice('cover')">
+
+                        🌱 Cover the Soil
+
+                    </button>
+
+
+                    <button
+                        onclick="handleErosionChoice('bare')">
+
+                        🚜 Leave the Soil Bare
+
+                    </button>
+
+
+                    <button
+                        onclick="handleErosionChoice('water')">
+
+                        💧 Add More Water
+
+                    </button>
+
+                </div>
+
+
+                <p id="erosionMessage"></p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             EPISODE 3
+             TOXIC SMOKE
+        ========================== -->
+
+        <div
+            id="smokeScreen"
+            class="episode-screen hidden">
+
+            <div class="episode-card">
+
+                <div class="episode-number">
+                    EPISODE 3
+                </div>
+
+                <h2>
+                    🌫️ Toxic Smoke!
+                </h2>
+
+                <p>
+                    Crop residue is left after harvest.
+                    What will you do with it?
+                </p>
+
+
+                <div id="smokeChoices">
+
+                    <button
+                        onclick="handleSmokeChoice('biomass')">
+
+                        🏭 Process the residue
+
+                    </button>
+
+
+                    <button
+                        onclick="handleSmokeChoice('burn')">
+
+                        🔥 Burn the residue
+
+                    </button>
+
+
+                    <button
+                        onclick="handleSmokeChoice('ignore')">
+
+                        🙈 Ignore the residue
+
+                    </button>
+
+                </div>
+
+
+                <p id="smokeMessage"></p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             RESIDUE MANAGEMENT
+        ========================== -->
+
+        <div
+            id="residueScreen"
+            class="episode-screen hidden">
+
+            <div class="episode-card">
+
+                <div class="episode-number">
+                    RESIDUE MANAGEMENT
+                </div>
+
+                <h2>
+                    🌾 Harvest Complete!
+                </h2>
+
+                <p>
+                    Your crops have been harvested,
+                    but crop residue remains on the field.
+                </p>
+
+                <p>
+                    How will you manage the residue?
+                </p>
+
+
+                <div id="residueChoices">
+
+                    <button
+                        onclick="chooseResidueMethod('mulch')">
+
+                        🌱 Mulch the residue
+
+                    </button>
+
+
+                    <button
+                        onclick="chooseResidueMethod('compost')">
+
+                        🪱 Make compost
+
+                    </button>
+
+
+                    <button
+                        onclick="chooseResidueMethod('biomass')">
+
+                        🏭 Process as biomass
+
+                    </button>
+
+
+                    <button
+                        onclick="chooseResidueMethod('burn')">
+
+                        🔥 Burn the residue
+
+                    </button>
+
+                </div>
+
+
+                <p id="residueMessage"></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="completionScreen" class="screen hidden">
+
+    <div class="completion-card">
+
+        <h1>🏆 FARM COMPLETED!</h1>
+
+        <p>
+            Congratulations! You successfully completed the Crop Rescue game.
+        </p>
+
+        <p>
+            🌱 You faced the farming challenges, managed crop residue,
+            and completed your farm journey.
+        </p>
+
+        <!-- PERSONALIZED CERTIFICATE -->
+        <div class="certificate-container">
+            <img
+                id="certificateImage"
+                alt="Crop Rescue Certificate"
+            >
+        </div>
+
+        <!-- FINAL STATS -->
+        <div id="finalStats">
+
+            <h2>📊 FINAL FARM STATS</h2>
+
+            <div class="final-stat">
+                💰 Money:
+                <span id="finalMoney">0</span>/100
+            </div>
+
+            <div class="final-stat">
+                🌱 Soil Health:
+                <span id="finalSoil">0</span>/100
+            </div>
+
+            <div class="final-stat">
+                🌫️ Air Quality:
+                <span id="finalAir">0</span>/100
+            </div>
+
+            <div class="final-stat">
+                🌾 Productivity:
+                <span id="finalProductivity">0</span>/100
+            </div>
+
+            <div class="final-stat">
+                ♻️ Sustainability:
+                <span id="finalSustainability">0</span>/100
+            </div>
+
+        </div>
+
+        <div class="completion-buttons">
+
+            <button onclick="downloadCertificate()">
+                📥 Download Certificate
+            </button>
+
+            <button onclick="tryAgain()">
+                🔄 Try Again
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!-- =========================
+         GAME OVER SCREEN
+    ========================== -->
+
+    <div
+        id="gameOverScreen"
+        class="game-over-screen hidden">
+
+        <div class="game-over-box">
+
+            <div class="game-over-icon">
+                💀
+            </div>
+
+            <h1>
+                GAME OVER
+            </h1>
+
+            <p id="gameOverMessage">
+                Your farm could not survive.
+            </p>
+
+            <p class="game-over-tip">
+                🌱 Better decisions could save your farm next time!
+            </p>
+
+            <button
+                class="main-button"
+                onclick="location.reload()">
+
+                🔄 Try Again
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SUCCESS / COMPLETION SCREEN
+    ========================== -->
+
+    <div
+        id="successScreen"
+        class="success-screen hidden">
+
+        <div class="success-box">
+
+            <div class="success-trophy">
+                🏆
+            </div>
+
+            <h1>
+                FARM SAVED!
+            </h1>
+
+            <p class="success-subtitle">
+                🎉 Congratulations, Farmer!
+            </p>
+
+            <p id="successMessage">
+                You successfully completed all the
+                farm challenges and managed your
+                crop residue responsibly.
+            </p>
+
+
+            <!-- FINAL STATS -->
+
+            <div class="final-stats">
+
+                <div class="final-stat-card">
+
+                    <span>💰</span>
+
+                    <strong id="finalMoney">
+                        70
+                    </strong>
+
+                    <small>
+                        Money
+                    </small>
+
+                </div>
+
+
+                <div class="final-stat-card">
+
+                    <span>🌱</span>
+
+                    <strong id="finalSoil">
+                        70
+                    </strong>
+
+                    <small>
+                        Soil Health
+                    </small>
+
+                </div>
+
+
+                <div class="final-stat-card">
+
+                    <span>🌫️</span>
+
+                    <strong id="finalAir">
+                        70
+                    </strong>
+
+                    <small>
+                        Air Quality
+                    </small>
+
+                </div>
+
+
+                <div class="final-stat-card">
+
+                    <span>🌾</span>
+
+                    <strong id="finalProductivity">
+                        70
+                    </strong>
+
+                    <small>
+                        Productivity
+                    </small>
+
+                </div>
+
+
+                <div class="final-stat-card">
+
+                    <span>♻️</span>
+
+                    <strong id="finalSustainability">
+                        70
+                    </strong>
+
+                    <small>
+                        Sustainability
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="completion-message">
+
+                🌿 Your decisions helped create
+                a cleaner environment and a
+                more sustainable farm!
+
+            </div>
+
+
+            <!-- =========================
+                 VISIBLE CERTIFICATE
+            ========================== -->
+
+            <div class="certificate-preview">
+
+                <div class="certificate-container">
+
+                    <div class="certificate-border">
+
+                        <div class="certificate-trophy">
+                            🏆
+                        </div>
+
+
+                        <h2>
+                            CERTIFICATE OF COMPLETION
+                        </h2>
+
+
+                        <h3>
+                            CROP RESCUE
+                        </h3>
+
+
+                        <p class="certificate-subtitle">
+                            SUSTAINABLE FARMING SIMULATION
+                        </p>
+
+
+                        <p class="presented-text">
+                            This certificate is proudly
+                            presented to
+                        </p>
+
+
+                        <div
+                            id="certificateName"
+                            class="certificate-name">
+
+                            Farmer
+
+                        </div>
+
+
+                        <div class="certificate-line"></div>
+
+
+                        <p class="certificate-description">
+
+                            for successfully completing
+                            all the challenges in the
+                            Crop Rescue game and managing
+                            agricultural residue through
+                            a sustainable farming strategy.
+
+                        </p>
+
+
+                        <div class="certificate-badges">
+
+                            <span>
+                                💰
+                                <small>
+                                    Economic<br>
+                                    Awareness
+                                </small>
+                            </span>
+
+
+                            <span>
+                                🌱
+                                <small>
+                                    Soil<br>
+                                    Conservation
+                                </small>
+                            </span>
+
+
+                            <span>
+                                🌫️
+                                <small>
+                                    Cleaner<br>
+                                    Air
+                                </small>
+                            </span>
+
+
+                            <span>
+                                🌾
+                                <small>
+                                    Productive<br>
+                                    Farming
+                                </small>
+                            </span>
+
+
+                            <span>
+                                ♻️
+                                <small>
+                                    Sustainable<br>
+                                    Practices
+                                </small>
+                            </span>
+
+                        </div>
+
+
+                        <div class="certificate-footer">
+
+                            <div>
+
+                                <strong
+                                    id="certificateDate">
+                                    Date
+                                </strong>
+
+                                <small>
+                                    DATE
+                                </small>
+
+                            </div>
+
+
+                            <div class="certificate-seal">
+                                🌿
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    CROP RESCUE
+                                </strong>
+
+                                <small>
+                                    GAME CERTIFIED
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 COMPLETION BUTTONS
+            ========================== -->
+
+            <button
+                class="certificate-button"
+                onclick="downloadCertificate()">
+
+                📜 Download Certificate
+
+            </button>
+
+
+            <button
+                class="main-button"
+                onclick="location.reload()">
+
+                🔄 Play Again
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <section id="residueScreen" class="episode-screen hidden">
+    ...
+</section>
+
+
+<!-- COMPLETION SCREEN -->
+<div id="completionScreen" class="completion-screen hidden">
+
+    <div class="completion-card">
+
+        <div class="completion-icon">🏆</div>
+
+        <h1>🎉 FARM COMPLETED!</h1>
+
+        <p id="completionMessage">
+            Congratulations! You successfully completed
+            the Crop Rescue game.
+        </p>
+
+        <p>
+            🌱 You faced the farming challenges,
+            managed crop residue, and completed your farm journey.
+        </p>
+
+        <button
+            class="main-button"
+            onclick="downloadCertificate()">
+            📜 Download Certificate
+        </button>
+
+    </div>
+
+</div>
+
+<div id="certificateScreen" class="hidden">
+
+    <img
+        src="certificate.jpeg"
+        id="certificateImage"
+        alt="Crop Rescue Certificate"
+    >
+
+    <button onclick="downloadCertificate()">
+        📥 Download Certificate
+    </button>
+
+</div>
+
+<!-- =========================
+     CROP RESCUE AI ASSISTANT
+========================= -->
+
+<div id="aiAssistant">
+
+    <button id="aiChatButton" onclick="toggleAIChat()">
+        🤖
+    </button>
+
+    <div id="aiChatWindow">
+
+        <div class="ai-chat-header">
+            <div>
+                <strong>🌱 Crop Rescue AI</strong>
+                <small>Powered by Gemini</small>
+            </div>
+
+            <button
+                class="ai-close-button"
+                onclick="toggleAIChat()">
+                ✕
+            </button>
+        </div>
+
+
+        <div id="aiChatMessages">
+
+            <div class="ai-message bot-message">
+
+    👋 Welcome to <strong>Crop Rescue!</strong> 🌾
+
+    <br><br>
+
+    🎮 <strong>How to Play</strong>
+
+    <br><br>
+
+    🌱 <strong>Step 1: Choose your crop</strong><br>
+    Select Rice, Wheat, or Maize and begin your farming season.
+
+    <br><br>
+
+    🐛 <strong>Step 2: Protect your crops</strong><br>
+    You will face three farming challenges:
+    pests, soil erosion, and crop residue pollution.
+    Choose the action you think will protect your farm best.
+
+    <br><br>
+
+    🚜 <strong>Step 3: Harvest</strong><br>
+    After surviving the challenges, your crops will be harvested.
+    Crop residue will remain on the field.
+
+    <br><br>
+
+    🌾 <strong>Step 4: Manage the residue</strong><br>
+    You can mulch it, compost it, process it into biomass,
+    or burn it. Each choice affects your farm differently.
+
+    <br><br>
+
+    📊 <strong>Step 5: Watch your farm stats</strong><br>
+    💰 Money · 🌱 Soil Health · 🌫️ Air Quality ·
+    🌾 Productivity · ♻️ Sustainability
+
+    <br><br>
+
+    Your decisions can improve or damage these values.
+    If any important farm stat reaches <strong>0</strong>,
+    your farm cannot survive.
+
+    <br><br>
+
+    💡 Choose carefully, and don't worry if you have questions.
+    Ask me about the game, soil, crop residue, air pollution,
+    erosion, burning, composting, mulching, biomass,
+    or anything related to this project!
+    
+</div>
+
+   
+
+        </div>
+
+
+        <div class="ai-chat-input">
+
+            <input
+                type="text"
+                id="aiUserInput"
+                placeholder="Ask about the game..."
+                onkeydown="handleAIEnter(event)"
+            >
+
+            <button onclick="sendAIMessage()">
+                ➤
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================================================
+     RESEARCH & SCIENTIFIC BACKGROUND
+========================================================= -->
+
+<section id="researchSection">
+
+    <div class="research-hero">
+
+        <div class="research-icon">📚</div>
+
+        <h1>Research & Scientific Background</h1>
+
+        <p>
+            Understanding the science behind crop residue burning,
+            air pollution and soil quality.
+        </p>
+
+        <button class="research-scroll-button" onclick="scrollToResearchContent()">
+            🔬 Explore the Research
+        </button>
+
+    </div>
+
+
+    <div id="researchContent" class="research-content">
+
+        <!-- INTRODUCTION -->
+
+        <article class="research-card">
+
+            <div class="research-card-title">
+                <span>🌾</span>
+                <h2>Crop Residue Burning: An Environmental and Agricultural Challenge</h2>
+            </div>
+
+            <p>
+                Crop residue is the plant material left in agricultural fields
+                after harvesting. It includes materials such as rice straw,
+                wheat straw, maize stalks, leaves and other remaining parts
+                of crops.
+            </p>
+
+            <p>
+                These residues contain organic matter and nutrients that can
+                contribute to soil health. Instead of being treated only as
+                waste, crop residues can be incorporated into soil, composted,
+                converted into biomass, used for bioenergy, or processed into
+                other useful products.
+            </p>
+
+        </article>
+
+
+        <!-- WHAT IS STUBBLE BURNING -->
+
+        <article class="research-card">
+
+            <div class="research-card-title">
+                <span>🔥</span>
+                <h2>What Is Crop Residue Burning?</h2>
+            </div>
+
+            <p>
+                Crop residue burning, commonly called stubble burning,
+                is the practice of deliberately setting fire to leftover
+                agricultural material after harvesting.
+            </p>
+
+            <p>
+                The practice is particularly associated with intensive
+                rice-wheat cropping systems in parts of northern India.
+                Farmers may burn residues because the period between
+                harvesting one crop and sowing the next can be very short.
+            </p>
+
+            <p>
+                Removing large quantities of residue can also require
+                machinery, labour, transportation and additional expenditure.
+                Burning therefore provides a rapid method of clearing
+                agricultural fields.
+            </p>
+
+        </article>
+
+
+        <!-- AIR POLLUTION -->
+
+        <article class="research-card">
+
+            <div class="research-card-title">
+                <span>🌫️</span>
+                <h2>How Does Burning Crop Residue Affect Air Quality?</h2>
+            </div>
+
+            <p>
+                When crop residues are burned in open fields, combustion
+                releases gases and fine particles into the atmosphere.
+                These emissions can include carbon monoxide, carbon dioxide,
+                nitrogen oxides, volatile organic compounds and particulate
+                matter.
+            </p>
+
+            <div class="science-highlight">
+
+                <div class="highlight-icon">⚠️</div>
+
+                <div>
+                    <strong>Why is PM₂.₅ important?</strong>
+
+                    <p>
+                        PM₂.₅ refers to fine particulate matter with a
+                        diameter of 2.5 micrometres or smaller. Because
+                        these particles are extremely small, they can
+                        penetrate deeply into the respiratory system.
+                    </p>
+                </div>
+
+            </div>
+
+            <p>
+                Agricultural burning has been identified as one of the
+                contributors to seasonal air-pollution episodes in the
+                Indo-Gangetic Plain. Smoke and particulate matter can also
+                travel beyond the immediate agricultural area through
+                atmospheric circulation.
+            </p>
+
+        </article>
+
+
+        <!-- SOIL QUALITY -->
+
+        <article class="research-card">
+
+            <div class="research-card-title">
+                <span>🌱</span>
+                <h2>How Does Burning Affect Soil Quality?</h2>
+            </div>
+
+            <p>
+                Crop residues normally provide an important source of
+                organic material to agricultural soil. When retained or
+                appropriately incorporated, residue can help protect the
+                soil surface, reduce moisture loss and contribute organic
+                matter as it decomposes.
+            </p>
+
+            <p>
+                Burning removes much of this potential organic input.
+                High temperatures produced during burning can also affect
+                organisms living in the surface soil.
+            </p>
+
+            <div class="soil-facts">
+
+                <div class="soil-fact">
+                    <span>🪱</span>
+                    <strong>Soil organisms</strong>
+                    <p>
+                        Burning can damage organisms living near the soil
+                        surface.
+                    </p>
+                </div>
+
+                <div class="soil-fact">
+                    <span>♻️</span>
+                    <strong>Organic matter</strong>
+                    <p>
+                        Residue that could decompose and contribute organic
+                        matter is instead removed through combustion.
+                    </p>
+                </div>
+
+                <div class="soil-fact">
+                    <span>💧</span>
+                    <strong>Soil protection</strong>
+                    <p>
+                        Removing surface residue can reduce the protective
+                        cover available against erosion and moisture loss.
+                    </p>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- WHY FARMERS BURN -->
+
+        <article class="research-card">
+
+            <div class="research-card-title">
+                <span>🚜</span>
+                <h2>Why Do Farmers Still Burn Crop Residues?</h2>
+            </div>
+
+            <p>
+                The continued use of residue burning is influenced by
+                practical and economic constraints. Farmers may have only
+                a short window between harvesting one crop and planting
+                the next.
+            </p>
+
+            <p>
+                Collecting, transporting and processing large amounts of
+                residue may require machinery, labour and additional costs.
+                For some farmers, burning therefore appears to be the
+                quickest way to prepare the field for the next crop.
+            </p>
+
+            <div class="research-note">
+                💡 <strong>Important:</strong>
+                Sustainable solutions need to consider both environmental
+                protection and the practical difficulties faced by farmers.
+            </div>
+
+        </article>
+
+
+        <!-- ALTERNATIVES -->
+
+        <article class="research-card">
+
+            <div class="research-card-title">
+                <span>♻️</span>
+                <h2>Sustainable Alternatives to Burning</h2>
+            </div>
+
+
+            <div class="alternative-grid">
+
+                <div class="alternative-card">
+                    <div class="alternative-icon">🌿</div>
+
+                    <h3>Mulching</h3>
+
+                    <p>
+                        Crop residues can be retained on the soil surface
+                        as mulch. This can help protect soil from erosion,
+                        reduce moisture loss and return organic material
+                        to the soil as the residue decomposes.
+                    </p>
+                </div>
+
+
+                <div class="alternative-card">
+                    <div class="alternative-icon">🍂</div>
+
+                    <h3>Composting</h3>
+
+                    <p>
+                        Residues can be converted into compost, allowing
+                        organic material and nutrients to return to
+                        agricultural soil instead of being released through
+                        combustion.
+                    </p>
+                </div>
+
+
+                <div class="alternative-card">
+                    <div class="alternative-icon">⚙️</div>
+
+                    <h3>In-Situ Management</h3>
+
+                    <p>
+                        Machinery such as the Happy Seeder and Super Seeder
+                        can help manage crop residues while allowing the
+                        following crop to be established.
+                    </p>
+                </div>
+
+
+                <div class="alternative-card">
+                    <div class="alternative-icon">⚡</div>
+
+                    <h3>Biomass Processing</h3>
+
+                    <p>
+                        Agricultural residues can be used as feedstock
+                        for bioenergy and other value-added products,
+                        turning waste material into a potential resource.
+                    </p>
+                </div>
+
+
+                <div class="alternative-card">
+                    <div class="alternative-icon">🖤</div>
+
+                    <h3>Biochar</h3>
+
+                    <p>
+                        Some agricultural residues can be converted into
+                        biochar. Research has investigated its potential
+                        applications in soil management and carbon storage.
+                    </p>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CONNECTION TO GAME -->
+
+        <article class="research-card game-connection">
+
+            <div class="research-card-title">
+                <span>🎮</span>
+                <h2>Connecting the Research to Crop Rescue</h2>
+            </div>
+
+            <p>
+                Crop Rescue transforms the scientific issue of crop residue
+                burning into an interactive farming simulation.
+            </p>
+
+            <p>
+                Throughout the game, players encounter pests, soil erosion
+                and crop-residue pollution. Their decisions influence
+                money, soil health, air quality, productivity and
+                sustainability.
+            </p>
+
+            <p>
+                After harvesting, players must decide how to manage the
+                remaining crop residue. The available choices demonstrate
+                different approaches to residue management, including
+                mulching, composting, biomass processing and burning.
+            </p>
+
+            <div class="game-message">
+                🌾 <strong>The central idea:</strong>
+                Crop residue does not have to be treated as waste.
+                It can become a useful agricultural resource when managed
+                sustainably.
+            </div>
+
+        </article>
+
+
+        <!-- CONCLUSION -->
+
+        <article class="research-card conclusion-card">
+
+            <div class="research-card-title">
+                <span>🔬</span>
+                <h2>Conclusion</h2>
+            </div>
+
+            <p>
+                Crop residue burning connects agriculture with air quality,
+                soil health, climate, economics and public health.
+                Although burning provides a rapid method of field clearance,
+                it also releases pollutants and removes organic material
+                that could otherwise contribute to soil health.
+            </p>
+
+            <p>
+                Sustainable residue management provides an alternative
+                approach. Mulching, composting, in-situ management,
+                biomass processing and other technologies can reduce
+                dependence on open-field burning while allowing farmers
+                to retain or recover value from agricultural residues.
+            </p>
+
+        </article>
+
+
+        <!-- SOURCES -->
+
+        <section class="research-sources">
+
+            <div class="sources-header">
+                <span>🔗</span>
+
+                <div>
+                    <h2>Sources & Further Reading</h2>
+
+                    <p>
+                        Research and background information used for
+                        this educational project.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="source-grid">
+
+                <a class="source-card"
+                   href="https://epubs.icar.org.in/index.php/JSWC/article/view/176464"
+                   target="_blank">
+
+                    <span>🇮🇳</span>
+
+                    <div>
+                        <strong>Indian Council of Agricultural Research</strong>
+                        <small>ICAR research on stubble burning, soil health and ecology</small>
+                    </div>
+
+                    <b>↗</b>
+
+                </a>
+
+
+                <a class="source-card"
+                   href="https://www.fao.org/4/a0100e/a0100e07.htm"
+                   target="_blank">
+
+                    <span>🌍</span>
+
+                    <div>
+                        <strong>Food and Agriculture Organization</strong>
+                        <small>Information on soil organic matter and residue management</small>
+                    </div>
+
+                    <b>↗</b>
+
+                </a>
+
+
+                <a class="source-card"
+                   href="https://pubmed.ncbi.nlm.nih.gov/35462257/"
+                   target="_blank">
+
+                    <span>🧬</span>
+
+                    <div>
+                        <strong>PubMed</strong>
+                        <small>Peer-reviewed scientific research and medical literature</small>
+                    </div>
+
+                    <b>↗</b>
+
+                </a>
+
+
+                <a class="source-card"
+                   href="https://link.springer.com/article/10.1007/s13593-022-00817-0"
+                   target="_blank">
+
+                    <span>📖</span>
+
+                    <div>
+                        <strong>Springer Nature</strong>
+                        <small>Research on agricultural residue management</small>
+                    </div>
+
+                    <b>↗</b>
+
+                </a>
+
+
+                <a class="source-card"
+                   href="https://www.sciencedirect.com/science/article/pii/S0167198723000089"
+                   target="_blank">
+
+                    <span>🔬</span>
+
+                    <div>
+                        <strong>ScienceDirect</strong>
+                        <small>Scientific literature on residue management and sustainability</small>
+                    </div>
+
+                    <b>↗</b>
+
+                </a>
+
+
+                <a class="source-card"
+                   href="https://en.wikipedia.org/wiki/Stubble_burning"
+                   target="_blank">
+
+                    <span>🌐</span>
+
+                    <div>
+                        <strong>Wikipedia</strong>
+                        <small>General background information on stubble burning</small>
+                    </div>
+
+                    <b>↗</b>
+
+                </a>
+
+            </div>
+
+
+            <div class="research-footer">
+                <span>🌱</span>
+                <p>
+                    Crop Rescue • Sustainable Agriculture •
+                    Environmental Awareness
+                </p>
+            </div>
+
+        </section>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     FOUNDERS SECTION
+========================= -->
+
+<section id="foundersSection">
+
+    <div class="founders-container">
+
+        <h2>🌱 Meet the Founders</h2>
+
+        <p class="founders-subtitle">
+            Crop Rescue was designed and developed by
+            our founding team.
+        </p>
+
+        <div class="founders-grid">
+
+            <div class="founder-card">
+                <div class="founder-icon">👩‍💻</div>
+                <h3>Briona Ann Blessin</h3>
+                <p>Founder & Developer</p>
+            </div>
+
+            <div class="founder-card">
+                <div class="founder-icon">👩‍💻</div>
+                <h3>Kratika Narwariya</h3>
+                <p>Founder & Developer</p>
+            </div>
+
+            <div class="founder-card">
+                <div class="founder-icon">👨‍💻</div>
+                <h3>Madhav Sharma</h3>
+                <p>Founder & Developer</p>
+            </div>
+
+        </div>
+
+        <div class="founders-footer">
+            🌾 <strong>Crop Rescue</strong> · Sustainable Farming Through Interactive Learning
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

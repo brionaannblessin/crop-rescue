@@ -1,0 +1,4288 @@
+/* =========================================================
+   CROP RESCUE - COMPLETE CLEAN CSS
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #18251b;
+    color: white;
+    min-height: 100vh;
+}
+
+.game {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.hidden {
+    display: none !important;
+}
+
+.screen {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* =========================================================
+   START SCREEN
+========================================================= */
+
+.logo {
+    font-size: 90px;
+    margin-bottom: 10px;
+}
+
+.screen h1 {
+    font-size: 56px;
+    color: #d9e88c;
+}
+
+.tagline {
+    font-size: 22px;
+    color: #b9cdb9;
+    margin-top: 10px;
+}
+
+.intro {
+    max-width: 550px;
+    line-height: 1.6;
+    color: #aebdaf;
+    margin: 25px 0;
+}
+
+/* Start button */
+
+.main-button {
+    width: 280px;
+    height: 75px;
+    border: none;
+    border-radius: 18px;
+    padding: 22px 55px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.main-button:hover {
+    background: #739f55;
+    transform: translateY(-2px);
+}
+
+/* Your current HTML has an inline start button */
+
+#startScreen button {
+    width: 360px !important;
+    height: 90px !important;
+
+    white-space: nowrap;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    font-size: 28px !important;
+    padding: 15px 25px !important;
+
+    background: linear-gradient(
+        135deg,
+        #22c55e,
+        #15803d
+    ) !important;
+
+    color: white !important;
+
+    border: none !important;
+    border-radius: 20px !important;
+
+    cursor: pointer !important;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================================
+   CROP SELECTION
+========================================================= */
+
+#cropScreen {
+    min-height: 90vh;
+}
+
+.crop-popup {
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.crop-popup.hidden {
+    display: none !important;
+}
+
+.crop-card {
+    background: rgba(20, 45, 25, 0.98);
+
+    border: 2px solid #8bcf55;
+
+    border-radius: 24px;
+
+    padding: 35px;
+
+    width: min(800px, 90vw);
+
+    max-height: 80vh;
+
+    overflow-y: auto;
+
+    text-align: center;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+#cropScreen h2 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.instruction {
+    color: #aebdaf;
+    margin: 10px 0 25px;
+}
+
+.crop-options {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+    width: 100%;
+
+    max-width: 800px;
+
+    margin: auto;
+}
+
+.crop-button {
+    min-height: 180px;
+
+    border: 2px solid #456548;
+
+    border-radius: 18px;
+
+    background: #263a28;
+
+    color: white;
+
+    padding: 25px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.crop-button:hover {
+    transform: translateY(-5px);
+    background: #304832;
+}
+
+.crop-button:first-letter {
+    font-size: 40px;
+}
+
+.crop-button strong {
+    display: block;
+
+    font-size: 22px;
+
+    margin: 15px 0 8px;
+}
+
+.crop-button small {
+    color: #aebdaf;
+
+    line-height: 1.4;
+}
+
+/* =========================================================
+   GAME HEADER
+========================================================= */
+
+.game-header {
+    display: block !important;
+
+    text-align: left;
+
+    background: #263a28;
+
+    padding: 20px 25px;
+
+    border-radius: 18px;
+
+    margin-bottom: 15px;
+
+    border: 2px solid #456548;
+}
+
+.game-header h1,
+.game-header h2 {
+    font-size: 32px;
+
+    margin-bottom: 8px;
+}
+
+.game-header p {
+    display: block;
+
+    color: #b9cdb9;
+
+    margin: 5px 0;
+}
+
+.day {
+    background: #172319;
+
+    padding: 12px 20px;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+}
+
+.day span {
+    color: #d9e88c;
+
+    font-size: 22px;
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+.stat-card {
+    background: #263a28;
+
+    border: 2px solid #456548;
+
+    border-radius: 14px;
+
+    padding: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.stat-card > span {
+    font-size: 25px;
+}
+
+.stat-card small {
+    display: block;
+
+    color: #aebdaf;
+
+    font-size: 12px;
+}
+
+.stat-card strong {
+    display: block;
+
+    font-size: 22px;
+
+    margin-top: 3px;
+}
+
+/* =========================================================
+   GAME AREA
+========================================================= */
+
+.game-area {
+    display: grid;
+
+    grid-template-columns: 1.7fr 1fr;
+
+    gap: 20px;
+}
+
+/* =========================================================
+   FARM FIELD
+========================================================= */
+
+.farm-field {
+    position: relative;
+
+    width: 50vw;
+
+    max-width: 1000px;
+
+    height: 75vh;
+
+    min-height: 500px;
+
+    margin: 20px auto;
+
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    background: linear-gradient(
+        to bottom,
+        #72c9f5 0%,
+        #72c9f5 55%,
+        #8b5a2b 55%,
+        #8b5a2b 100%
+    );
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* Clouds */
+
+.farm-field::before {
+    content: "☁️        ☁️";
+
+    position: absolute;
+
+    top: 35px;
+
+    left: 10%;
+
+    font-size: 40px;
+
+    letter-spacing: 100px;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+/* Soil */
+
+#farmSoil {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: 0;
+
+    height: 45%;
+
+    background: repeating-linear-gradient(
+        0deg,
+        #5a3f20 0px,
+        #5a3f20 18px,
+        #654825 19px,
+        #654825 21px
+    );
+
+    z-index: 3;
+}
+
+/* Crop */
+
+.farm-crop {
+    position: absolute !important;
+
+    transition:
+        transform 0.8s ease,
+        opacity 0.8s ease;
+
+    z-index: 10 !important;
+}
+
+/* Farmer */
+
+.farmer {
+    position: absolute;
+
+    right: 25px;
+
+    bottom: 20px;
+
+    font-size: 60px;
+
+    z-index: 20;
+}
+
+/* Sun */
+
+.sun {
+    position: absolute;
+
+    top: 30px;
+
+    right: 40px;
+
+    font-size: 70px;
+
+    z-index: 1;
+}
+
+/* =========================================================
+   CROP GROWTH
+========================================================= */
+
+.growth-animation {
+    font-size: 70px;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    animation:
+        growPulse
+        1s ease-in-out infinite alternate;
+}
+
+@keyframes growPulse {
+
+    from {
+        transform: scale(0.9);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+/* =========================================================
+   PEST ANIMATION
+========================================================= */
+
+.pest {
+    position: absolute;
+
+    font-size: 25px;
+
+    z-index: 15;
+
+    animation:
+        pestMove
+        1.5s infinite alternate ease-in-out;
+}
+
+@keyframes pestMove {
+
+    from {
+        transform: translate(0, 0) rotate(-5deg);
+    }
+
+    to {
+        transform: translate(8px, -5px) rotate(5deg);
+    }
+}
+
+.natural-spray {
+    position: absolute;
+
+    font-size: 32px;
+
+    z-index: 30;
+
+    animation:
+        naturalSpray
+        1.5s ease-out forwards;
+}
+
+@keyframes naturalSpray {
+
+    0% {
+        opacity: 0;
+
+        transform: scale(0.3);
+    }
+
+    40% {
+        opacity: 1;
+
+        transform: scale(1.3);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform: scale(2);
+    }
+}
+
+/* Flood */
+
+.flood-water {
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 0;
+
+    background: rgba(60, 160, 220, 0.65);
+
+    z-index: 12;
+
+    animation:
+        waterRise
+        2s ease-in forwards;
+}
+
+@keyframes waterRise {
+
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 35%;
+    }
+}
+
+/* Crop damage */
+
+.crop-damage {
+    animation:
+        cropShake
+        0.25s infinite;
+}
+
+@keyframes cropShake {
+
+    0% {
+        transform:
+            translateX(-50%)
+            rotate(0deg);
+    }
+
+    25% {
+        transform:
+            translateX(-50%)
+            rotate(-5deg);
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            rotate(5deg);
+    }
+
+    75% {
+        transform:
+            translateX(-50%)
+            rotate(-4deg);
+    }
+
+    100% {
+        transform:
+            translateX(-50%)
+            rotate(0deg);
+    }
+}
+
+/* =========================================================
+   SOIL EROSION
+========================================================= */
+
+.rain-cloud {
+    position: absolute;
+
+    top: 45px;
+
+    left: 35%;
+
+    font-size: 70px;
+
+    z-index: 25;
+
+    animation:
+        cloudMove
+        2s ease-in-out infinite alternate;
+}
+
+@keyframes cloudMove {
+
+    from {
+        transform: translateX(-20px);
+    }
+
+    to {
+        transform: translateX(20px);
+    }
+}
+
+.rain-drop {
+    position: absolute;
+
+    top: 110px;
+
+    font-size: 22px;
+
+    z-index: 24;
+
+    animation:
+        rainFall
+        0.8s linear infinite;
+}
+
+@keyframes rainFall {
+
+    from {
+        transform: translateY(0);
+
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(300px);
+
+        opacity: 0;
+    }
+}
+
+.soil-particle {
+    position: absolute;
+
+    font-size: 13px;
+
+    z-index: 18;
+
+    animation:
+        soilWashAway
+        2s ease-in forwards;
+}
+
+@keyframes soilWashAway {
+
+    0% {
+        opacity: 1;
+
+        transform: translate(0, 0);
+    }
+
+    40% {
+        opacity: 1;
+
+        transform: translate(50px, 35px);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform: translate(180px, 90px);
+    }
+}
+
+.soil-protected {
+    animation:
+        protectedField
+        1s ease-in-out;
+}
+
+@keyframes protectedField {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.erosion-runoff {
+    position: absolute;
+
+    left: -10%;
+
+    bottom: 20px;
+
+    width: 120%;
+
+    height: 45px;
+
+    background: rgba(120, 85, 45, 0.8);
+
+    border-radius: 50%;
+
+    z-index: 17;
+
+    animation:
+        runoffMove
+        2s linear infinite;
+}
+
+@keyframes runoffMove {
+
+    from {
+        transform: translateX(-15%);
+    }
+
+    to {
+        transform: translateX(15%);
+    }
+}
+
+/* =========================================================
+   EPISODE SCREENS
+========================================================= */
+
+.episode-screen {
+    position: relative;
+
+    z-index: 50;
+
+    margin: 25px auto;
+
+    width: 70vw;
+
+    max-width: 900px;
+}
+
+#erosionScreen {
+    position: static !important;
+
+    display: block;
+
+    width: 70vw;
+
+    margin: 30px auto 50px;
+
+    transform: none !important;
+
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+
+    z-index: 10;
+}
+
+.episode-card {
+    background: #263a28;
+
+    border: 2px solid #456548;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+#erosionScreen .episode-card {
+    position: static !important;
+
+    width: 100%;
+}
+
+.episode-number {
+    color: #d9e88c;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.episode-card h2 {
+    font-size: 32px;
+
+    margin-bottom: 15px;
+}
+
+.episode-card p {
+    color: #c7d6c7;
+
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+}
+
+/* Episode choice buttons */
+
+#pestChoices,
+#erosionChoices,
+#smokeChoices,
+#residueChoices {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    max-width: 600px;
+
+    margin: auto;
+}
+
+#pestChoices button,
+#erosionChoices button,
+#smokeChoices button,
+#residueChoices button {
+    border: 2px solid #456548;
+
+    border-radius: 14px;
+
+    padding: 15px 20px;
+
+    background: #304832;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+#pestChoices button:hover,
+#erosionChoices button:hover,
+#smokeChoices button:hover,
+#residueChoices button:hover {
+    transform: translateY(-2px);
+
+    background: #3d5b3f;
+}
+
+/* =========================================================
+   BURN / SMOKE / BIOMASS EFFECTS
+========================================================= */
+
+.burn-effect {
+    position: absolute;
+
+    left: 45%;
+
+    bottom: 35px;
+
+    font-size: 70px;
+
+    z-index: 50;
+
+    animation:
+        fireGrow
+        3s ease-in-out;
+}
+
+@keyframes fireGrow {
+
+    0% {
+        transform: scale(0.4);
+
+        opacity: 0;
+    }
+
+    30% {
+        transform: scale(1.2);
+
+        opacity: 1;
+    }
+
+    70% {
+        transform: scale(1);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.7);
+
+        opacity: 0;
+    }
+}
+
+.smoke-effect {
+    position: absolute;
+
+    left: 47%;
+
+    bottom: 130px;
+
+    font-size: 70px;
+
+    z-index: 50;
+
+    animation:
+        smokeRise
+        3s ease-out;
+}
+
+@keyframes smokeRise {
+
+    0% {
+        transform:
+            translateY(20px)
+            scale(0.5);
+
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-180px)
+            scale(1.5);
+
+        opacity: 0;
+    }
+}
+
+.biomass-effect {
+    position: absolute;
+
+    left: 43%;
+
+    bottom: 35px;
+
+    font-size: 55px;
+
+    z-index: 50;
+
+    animation:
+        machineProcess
+        3s ease-in-out;
+}
+
+@keyframes machineProcess {
+
+    0% {
+        transform:
+            scale(0.5)
+            rotate(-5deg);
+
+        opacity: 0;
+    }
+
+    30% {
+        transform:
+            scale(1.1)
+            rotate(5deg);
+
+        opacity: 1;
+    }
+
+    60% {
+        transform:
+            scale(1)
+            rotate(-5deg);
+    }
+
+    100% {
+        transform:
+            scale(0.8);
+
+        opacity: 0;
+    }
+}
+
+.residue-effect {
+    position: absolute;
+
+    left: 42%;
+
+    bottom: 30px;
+
+    font-size: 45px;
+
+    z-index: 50;
+
+    animation:
+        residueAppear
+        3s ease-in-out;
+}
+
+@keyframes residueAppear {
+
+    0% {
+        transform: translateY(20px);
+
+        opacity: 0;
+    }
+
+    40% {
+        transform: translateY(0);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-10px);
+
+        opacity: 0;
+    }
+}
+
+/* Toxic smoke */
+
+.episode-smoke {
+    position: absolute;
+
+    z-index: 30;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation:
+        toxicCloud
+        4s ease-in-out infinite;
+}
+
+@keyframes toxicCloud {
+
+    0% {
+        opacity: 0;
+
+        transform: scale(0.5);
+    }
+
+    30% {
+        opacity: 0.65;
+
+        transform: scale(1);
+    }
+
+    60% {
+        opacity: 0.8;
+
+        transform: scale(1.3);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform: scale(1.7);
+    }
+}
+
+/* =========================================================
+   CROP RESIDUE
+========================================================= */
+
+.crop-residue {
+    position: absolute;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    z-index: 25;
+
+    pointer-events: none;
+    cursor: grab;
+
+    opacity: 0.9;
+
+    animation:
+        residueDrop
+        0.8s ease-out;
+}
+
+@keyframes residueDrop {
+
+    0% {
+        transform:
+            translateY(-25px)
+            scale(0);
+
+        opacity: 0;
+    }
+
+    60% {
+        transform:
+            translateY(5px)
+            scale(1.2);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity: 1;
+    }
+}
+
+.cut-residue {
+    opacity: 0.75;
+}
+
+.mulch-piece {
+    position: absolute;
+
+    z-index: 20;
+
+    user-select: none;
+
+    transition:
+        transform 0.15s ease;
+}
+
+/* =========================================================
+   COMPOST STATION INSIDE FARM
+========================================================= */
+
+#compostStation {
+    position: absolute;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 280px;
+
+    padding: 15px;
+
+    background: rgba(31, 45, 32, 0.96);
+
+    border: 3px solid #8bcf55;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    z-index: 100;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.45);
+
+    transition:
+        transform 0.3s ease;
+}
+
+.compost-label {
+    color: #d9e88c;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   ACTUAL COMPOST BIN
+========================================================= */
+
+.compost-bin {
+    position: relative;
+
+    width: 190px;
+
+    height: 190px;
+
+    margin: 10px auto 15px;
+
+    cursor: pointer;
+}
+
+
+/* BIN LID */
+
+.bin-lid {
+    position: absolute;
+
+    top: 0;
+
+    left: -8px;
+
+    width: 206px;
+
+    height: 30px;
+
+    background: linear-gradient(
+        to bottom,
+        #607d3b,
+        #3f5728
+    );
+
+    border: 4px solid #263618;
+
+    border-radius: 12px 12px 5px 5px;
+
+    z-index: 5;
+
+    box-shadow:
+        0 5px 8px rgba(0,0,0,0.35);
+}
+
+
+/* LITTLE HANDLE */
+
+.bin-lid::after {
+    content: "";
+
+    position: absolute;
+
+    width: 55px;
+
+    height: 10px;
+
+    left: 50%;
+
+    top: -9px;
+
+    transform: translateX(-50%);
+
+    background: #34451f;
+
+    border-radius: 10px;
+
+    border: 3px solid #263618;
+}
+
+
+/* BIN BODY */
+
+.bin-body {
+    position: absolute;
+
+    left: 10px;
+
+    right: 10px;
+
+    top: 25px;
+
+    bottom: 0;
+
+    background: linear-gradient(
+        135deg,
+        #719447,
+        #405d2b
+    );
+
+    border: 5px solid #263618;
+
+    border-radius:
+        10px
+        10px
+        25px
+        25px;
+
+    overflow: hidden;
+
+    box-shadow:
+        inset 0 5px 8px rgba(255,255,255,0.15),
+        0 12px 20px rgba(0,0,0,0.45);
+}
+
+
+/* BIN LOGO */
+
+.bin-logo {
+    font-size: 42px;
+
+    margin-top: 28px;
+}
+
+
+/* BIN TEXT */
+
+.bin-text {
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,0.5);
+}
+
+
+/* =========================================================
+   RESIDUE INSIDE BIN
+========================================================= */
+
+.compost-pile {
+    position: absolute;
+
+    left: 15px;
+
+    right: 15px;
+
+    bottom: 10px;
+
+    min-height: 45px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    gap: 3px;
+
+    font-size: 25px;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   COMPOST CONTROLS
+========================================================= */
+
+.compost-controls {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    margin-top: 8px;
+}
+
+.compost-controls button {
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 7px 10px;
+
+    background: white;
+
+    color: #285c32;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        background 0.2s;
+}
+
+.compost-controls button:hover {
+    transform: translateY(-2px);
+
+    background: #dff3df;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+#compostStatus {
+    color: #e6f3d5;
+
+    font-size: 13px;
+
+    margin: 10px 0;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   START BUTTON
+========================================================= */
+
+#startCompostButton {
+    width: 100%;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 10px;
+
+    background: #66bb6a;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#startCompostButton:disabled {
+    opacity: 0.4;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   COMPOSTING ANIMATION
+========================================================= */
+
+#compostStation.composting {
+    animation:
+        compostStationPulse
+        1.5s infinite;
+}
+
+@keyframes compostStationPulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* Steam / compost particles */
+
+#compostPile.composting::after {
+    content: "💨 🌱";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 45px;
+
+    transform: translateX(-50%);
+
+    font-size: 22px;
+
+    animation:
+        compostSteam
+        1.5s infinite;
+}
+
+@keyframes compostSteam {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, 10px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -35px);
+    }
+}
+
+.crop-residue:hover {
+    transform: scale(1.2);
+
+    filter: drop-shadow(
+        0 0 8px rgba(255,255,255,0.5)
+    );
+}
+
+.crop-residue:active {
+    cursor: grabbing;
+}
+
+.compost-added-piece {
+    display: inline-block;
+
+    animation:
+        residueIntoBin
+        0.6s ease;
+}
+
+@keyframes residueIntoBin {
+
+    0% {
+        transform:
+            translateY(-40px)
+            scale(1.5);
+
+        opacity: 0;
+    }
+
+    60% {
+        transform:
+            translateY(5px)
+            scale(1.1);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.compost-hidden {
+    display: none !important;
+}
+
+.compost-visible {
+    display: block !important;
+}
+
+#compostStation {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+}
+
+/* Compost station is hidden until Compost is selected */
+#compostStation {
+    display: none !important;
+}
+
+#compostStation.compost-hidden {
+    display: none !important;
+}
+
+.compost-hidden {
+    display: none;
+}
+
+.compost-visible {
+    display: block;
+}
+
+.compost-controls button {
+    margin: 8px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+/* =========================================================
+   FINAL COMPOST STATION
+========================================================= */
+
+#compostStation {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+
+    width: 300px;
+
+    padding: 15px;
+
+    background: rgba(31, 45, 32, 0.96);
+
+    border: 3px solid #8bcf55;
+    border-radius: 20px;
+
+    text-align: center;
+
+    z-index: 100;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+
+#compostStation.compost-hidden {
+    display: none !important;
+}
+
+#compostStation.compost-visible {
+    display: block !important;
+}
+
+/* Actual residue must be draggable */
+
+.crop-residue {
+    pointer-events: auto !important;
+    cursor: grab;
+    user-select: none;
+}
+
+.crop-residue:active {
+    cursor: grabbing;
+}
+
+#compostStatus {
+    color: #e6f3d5;
+    font-size: 13px;
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+#startCompostButton {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    background: #66bb6a;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#startCompostButton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* =========================================================
+   BIOMASS MINI-GAME
+========================================================= */
+
+#biomassPanel {
+    position: absolute;
+    top: 25px;
+    width: 300px;
+    padding: 20px;
+    background: rgba(20, 40, 25, 0.96);
+    border: 3px solid #8bcf55;
+    border-radius: 20px;
+    z-index: 200;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+
+.biomass-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #d9e88c;
+    margin-bottom: 12px;
+}
+
+#biomassStage {
+    font-size: 15px;
+    font-weight: bold;
+    color: #8bcf55;
+    margin-bottom: 12px;
+}
+
+#biomassCounter {
+    margin: 8px 0;
+}
+
+.biomass-bar,
+.meter {
+    width: 100%;
+    height: 18px;
+    background: #18251b;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 8px 0 15px;
+}
+
+#biomassProgress,
+#moistureFill {
+    height: 100%;
+    width: 0%;
+    background: #66bb6a;
+    transition: width 0.25s ease;
+}
+
+#biomassStatus {
+    color: #d8e6d8;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 12px 0;
+}
+
+#biomassAction {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: #66bb6a;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#biomassAction:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+#moistureMeter {
+    margin-top: 10px;
+}
+
+.meter-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #d8e6d8;
+}
+
+#moistureFill {
+    width: 100%;
+    background: #f5c542;
+}
+
+#biomassOutput {
+    position: absolute;
+    left: 50%;
+    bottom: 100px;
+    transform: translateX(-50%);
+    padding: 18px;
+    background: rgba(40,55,30,0.95);
+    border: 3px solid #8bcf55;
+    border-radius: 18px;
+    font-size: 35px;
+    text-align: center;
+    z-index: 150;
+    animation: biomassOutputAppear 1s ease;
+}
+
+#biomassOutput div {
+    font-size: 14px;
+    margin-top: 8px;
+    color: #d9e88c;
+}
+
+@keyframes biomassOutputAppear {
+    from {
+        transform: translateX(-50%) scale(0.4);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* =========================================================
+   PHYSICAL BIOMASS COLLECTION
+========================================================= */
+
+
+.collector-tractor:hover {
+    transform: scale(1.08);
+}
+
+
+.collector-info strong {
+    display: block;
+    font-size: 15px;
+    color: #d9e88c;
+}
+
+.collector-info small {
+    display: block;
+    font-size: 11px;
+    color: #d8e6d8;
+    margin-top: 6px;
+}
+
+
+.collector-machine strong {
+    display: block;
+    font-size: 15px;
+    color: #d9e88c;
+    margin-top: 5px;
+}
+
+.collector-machine small {
+    display: block;
+    font-size: 11px;
+    color: #d8e6d8;
+    margin-top: 6px;
+}
+
+.collector-counter {
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: rgba(20,40,25,0.95);
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.collection-complete .collector-machine {
+    animation: collectorSuccess 0.6s ease-in-out 2;
+}
+
+@keyframes collectorSuccess {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+/* TRACTOR STAYS INSIDE FARM */
+
+#biomassCollector {
+    position: absolute;
+    right: 80px;
+    bottom: 45px;
+    z-index: 100;
+}
+
+.collector-tractor {
+    font-size: 75px;
+    cursor: pointer;
+    filter: drop-shadow(0 6px 4px rgba(0,0,0,0.35));
+    transition: transform 0.2s ease;
+}
+
+.collector-tractor:hover {
+    transform: scale(1.08);
+}
+
+/* INSTRUCTIONS + COUNTER STAY OUTSIDE FARM */
+
+#collectorUI {
+    position: fixed;
+    right: 30px;
+    top: 45%;
+    width: 230px;
+    z-index: 1000;
+    text-align: center;
+}
+
+.collector-info {
+    padding: 15px;
+    background: rgba(49,92,53,0.96);
+    border: 3px solid #8bcf55;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.collector-info strong {
+    display: block;
+    font-size: 15px;
+    color: #d9e88c;
+}
+
+.collector-info small {
+    display: block;
+    font-size: 11px;
+    color: #d8e6d8;
+    margin-top: 6px;
+}
+
+.collector-counter {
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(20,40,25,0.96);
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#biomassBaler {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    width: 240px;
+    padding: 18px;
+    background: #263a28;
+    border: 3px solid #d9e88c;
+    border-radius: 18px;
+    text-align: center;
+    z-index: 100;
+}
+
+.baler-machine {
+    font-size: 65px;
+    animation: balerShake 0.5s infinite alternate;
+}
+
+@keyframes balerShake {
+    from {
+        transform: translateX(-3px);
+    }
+    to {
+        transform: translateX(3px);
+    }
+}
+
+.baler-label {
+    font-weight: bold;
+    color: #d9e88c;
+    margin: 8px 0;
+}
+
+#startBalingButton {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background: #66bb6a;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#startBalingButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.baling-progress {
+    width: 100%;
+    height: 12px;
+    background: #172319;
+    border-radius: 10px;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+#balingProgress {
+    width: 0%;
+    height: 100%;
+    background: #8bcf55;
+    transition: width 0.2s;
+}
+
+.biomass-bale {
+    position: absolute;
+    font-size: 45px;
+    z-index: 80;
+    cursor: pointer;
+    transition: transform 0.5s, opacity 0.5s;
+    user-select: none;
+}
+
+.biomass-bale:hover {
+    transform: scale(1.15);
+}
+
+#biomassCollector {
+    z-index: 50 !important;
+}
+
+#biomassCollector .collector-tractor {
+    z-index: 50 !important;
+}
+
+.crop-residue {
+    z-index: 200 !important;
+    pointer-events: auto !important;
+}
+
+/* =========================================================
+   BURNING MINI-GAME
+========================================================= */
+
+#burnPile {
+    position: absolute;
+    left: 42%;
+    bottom: 80px;
+    width: 220px;
+    padding: 18px;
+    text-align: center;
+    background: rgba(55, 35, 20, 0.95);
+    border: 3px solid #d97706;
+    border-radius: 18px;
+    z-index: 300;
+}
+
+.burn-pile-residue {
+    font-size: 30px;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+#igniteButton {
+    border: none;
+    border-radius: 12px;
+    padding: 12px 20px;
+    background: #dc2626;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#igniteButton:hover {
+    transform: scale(1.05);
+}
+
+.burn-game-fire {
+    position: absolute;
+    left: 43%;
+    bottom: 80px;
+    font-size: 75px;
+    z-index: 250;
+    animation: burnFireGrow 3s ease-in-out forwards;
+}
+
+@keyframes burnFireGrow {
+
+    0% {
+        transform: scale(0.4);
+        opacity: 0;
+    }
+
+    30% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    70% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+}
+
+.burn-game-smoke {
+    position: absolute;
+    left: 40%;
+    bottom: 180px;
+    font-size: 55px;
+    z-index: 260;
+    animation: burnSmokeRise 4s ease-out forwards;
+}
+
+@keyframes burnSmokeRise {
+
+    0% {
+        transform: translateY(20px) scale(0.5);
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-250px) scale(2);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   FARM STATS HUD
+========================= */
+
+.stats-panel {
+    width: 92%;
+    max-width: 1100px;
+    margin: 15px auto;
+    padding: 12px 18px;
+
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+
+    background: rgba(20, 40, 25, 0.92);
+    border: 2px solid #8bcf55;
+    border-radius: 18px;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.stat {
+    min-width: 150px;
+
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    gap: 6px;
+
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.stat-name {
+    min-width: 75px;
+}
+
+.stat-bar {
+    width: 80px;
+    height: 10px;
+
+    background: #303030;
+    border-radius: 10px;
+    overflow: hidden;
+
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
+.stat-fill {
+    width: 70%;
+    height: 100%;
+
+    background: #72c94a;
+    border-radius: 10px;
+
+    transition:
+        width 0.5s ease,
+        background 0.3s ease;
+}
+
+.stat span:last-child {
+    min-width: 25px;
+    text-align: right;
+}
+
+
+/* =========================
+   LOW STAT WARNING
+========================= */
+
+.stat-fill.low {
+    background: #e0a52f;
+}
+
+.stat-fill.critical {
+    background: #d94b4b;
+}
+
+
+/* =========================
+   GAME OVER
+========================= */
+
+.game-over-screen {
+    position: fixed;
+    inset: 0;
+
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.78);
+
+    padding: 20px;
+}
+
+.game-over-screen.hidden {
+    display: none;
+}
+
+.game-over-box {
+    width: min(90%, 500px);
+
+    padding: 40px 30px;
+
+    text-align: center;
+
+    background: #18251b;
+
+    border: 3px solid #d94b4b;
+    border-radius: 25px;
+
+    box-shadow:
+        0 0 40px rgba(0, 0, 0, 0.6);
+
+    animation: gameOverPop 0.5s ease;
+}
+
+.game-over-icon {
+    font-size: 70px;
+    margin-bottom: 10px;
+}
+
+.game-over-box h1 {
+    margin: 5px 0 15px;
+
+    color: #ff6b6b;
+    font-size: 42px;
+}
+
+.game-over-box p {
+    color: white;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.game-over-tip {
+    color: #b8d9a5 !important;
+    font-size: 15px !important;
+}
+
+@keyframes gameOverPop {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .stats-panel {
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .stat {
+        min-width: 135px;
+        font-size: 11px;
+    }
+
+    .stat-bar {
+        width: 55px;
+    }
+
+    .stat-name {
+        min-width: 60px;
+    }
+
+    .game-over-box h1 {
+        font-size: 34px;
+    }
+}
+
+/* =========================
+   SUCCESS SCREEN
+========================= */
+
+.success-screen {
+    position: fixed;
+    inset: 0;
+
+    z-index: 99998;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0, 0, 0, 0.82);
+
+    overflow-y: auto;
+}
+
+.success-screen.hidden {
+    display: none;
+}
+
+.success-box {
+    width: min(95%, 800px);
+
+    margin: 20px auto;
+
+    padding: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #17251a,
+            #243c27
+        );
+
+    border: 3px solid #9bd66a;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 0 50px rgba(139, 207, 85, 0.25);
+
+    text-align: center;
+
+    animation: successPop 0.6s ease;
+}
+
+.success-trophy {
+    font-size: 70px;
+
+    animation: trophyBounce 1.5s infinite ease-in-out;
+}
+
+.success-box h1 {
+    margin: 5px 0;
+
+    color: #c5ed91;
+
+    font-size: 45px;
+    letter-spacing: 3px;
+}
+
+.success-subtitle {
+    margin: 5px;
+
+    color: #f4d56a;
+
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#successMessage {
+    color: white;
+
+    max-width: 600px;
+
+    margin: 15px auto 25px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   FINAL STATS
+========================= */
+
+.final-stats {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin: 20px 0;
+}
+
+.final-stat-card {
+    width: 105px;
+
+    padding: 14px 8px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border: 1px solid #789d59;
+
+    border-radius: 15px;
+
+    color: white;
+}
+
+.final-stat-card span {
+    display: block;
+
+    font-size: 25px;
+}
+
+.final-stat-card strong {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #c5ed91;
+
+    font-size: 22px;
+}
+
+.final-stat-card small {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 10px;
+
+    opacity: 0.8;
+}
+
+
+/* =========================
+   COMPLETION MESSAGE
+========================= */
+
+.completion-message {
+    max-width: 600px;
+
+    margin: 20px auto;
+
+    padding: 13px 20px;
+
+    background:
+        rgba(139, 207, 85, 0.12);
+
+    border: 1px solid #789d59;
+
+    border-radius: 20px;
+
+    color: #d9efc8;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   CERTIFICATE PREVIEW
+========================= */
+
+.certificate-preview {
+    margin: 25px auto;
+
+    padding: 10px;
+
+    background: #d5a936;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.35);
+}
+
+.certificate-border {
+    padding: 28px 25px;
+
+    background:
+        #f8f1d8;
+
+    border: 5px solid #315c35;
+
+    outline: 2px solid #d5a936;
+    outline-offset: -12px;
+
+    color: #315c35;
+}
+
+.certificate-trophy {
+    font-size: 45px;
+}
+
+.certificate-border h2 {
+    margin: 5px 0;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(22px, 4vw, 38px);
+
+    color: #315c35;
+}
+
+.certificate-border h3 {
+    margin: 5px;
+
+    font-family: Georgia, serif;
+
+    letter-spacing: 5px;
+
+    color: #315c35;
+}
+
+.certificate-subtitle {
+    margin: 3px 0 25px;
+
+    letter-spacing: 3px;
+
+    font-size: 11px;
+}
+
+.presented-text {
+    margin-bottom: 5px;
+
+    color: #555;
+
+    font-family: Georgia, serif;
+}
+
+.certificate-name {
+    margin: 10px 0 3px;
+
+    font-family: cursive;
+
+    font-size: 35px;
+
+    color: #542d1d;
+}
+
+.certificate-line {
+    width: 60%;
+
+    height: 2px;
+
+    margin: auto;
+
+    background: #d5a936;
+}
+
+.certificate-description {
+    max-width: 600px;
+
+    margin: 18px auto;
+
+    color: #543c2b;
+
+    font-family: Georgia, serif;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+.certificate-badges {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    margin: 20px 0;
+}
+
+.certificate-badges span {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 4px;
+
+    font-size: 24px;
+
+    color: #315c35;
+}
+
+.certificate-badges small {
+    font-size: 8px;
+
+    line-height: 1.2;
+
+    text-transform: uppercase;
+}
+
+.certificate-footer {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-around;
+
+    margin-top: 25px;
+
+    color: #543c2b;
+}
+
+.certificate-footer div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.certificate-footer strong {
+    font-family: Georgia, serif;
+
+    font-size: 12px;
+}
+
+.certificate-footer small {
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+.certificate-seal {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 4px solid #d5a936;
+
+    border-radius: 50%;
+
+    background: #315c35;
+
+    color: #f5d76e;
+
+    font-size: 28px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.certificate-button {
+    display: block;
+
+    margin: 18px auto 12px;
+
+    padding: 14px 30px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #e5bd45;
+
+    color: #302300;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.certificate-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 20px rgba(229,189,69,0.35);
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes successPop {
+
+    from {
+        opacity: 0;
+        transform: scale(0.75);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes trophyBounce {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .success-box {
+        padding: 20px 12px;
+    }
+
+    .success-box h1 {
+        font-size: 34px;
+    }
+
+    .certificate-border {
+        padding: 22px 12px;
+    }
+
+    .certificate-name {
+        font-size: 27px;
+    }
+
+    .final-stat-card {
+        width: 85px;
+    }
+
+}
+
+.completion-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(20, 50, 25, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.completion-card {
+    background: #f8f1d8;
+    width: min(600px, 90%);
+    padding: 45px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    border: 5px solid #d5a936;
+}
+
+.completion-icon {
+    font-size: 70px;
+}
+
+.completion-card h1 {
+    color: #315c35;
+    font-size: 38px;
+}
+
+.completion-card p {
+    color: #543c2b;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+#completionScreen {
+    text-align: center;
+    padding: 30px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.certificate-container {
+    width: min(800px, 90%);
+    margin: 25px auto;
+}
+
+#certificateImage {
+    width: 100%;
+    max-width: 800px;
+    display: block;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+#finalStats {
+    width: min(600px, 90%);
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.95);
+}
+
+#finalStats h2 {
+    margin-bottom: 15px;
+}
+
+.final-stat {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    background: #eef7e8;
+    font-weight: bold;
+}
+
+.completion-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.completion-buttons button {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#completionScreen {
+    background: #123d20;
+    min-height: 100vh;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.completion-card {
+    width: min(1200px, 95%);
+    margin: auto;
+    padding: 30px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.certificate-container {
+    width: min(1000px, 95%);
+    margin: 30px auto;
+}
+
+#certificateImage {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+#finalStats {
+    width: min(700px, 95%);
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 18px;
+    background: #f1f7ec;
+}
+
+.final-stat {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    background: #285c32;
+    font-weight: bold;
+}
+
+.completion-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.completion-buttons button {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* =========================
+   CLEAN START SCREEN
+========================= */
+
+#startScreen {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.start-content {
+    width: 100%;
+    max-width: 620px;
+    text-align: center;
+}
+
+.game-logo {
+    font-size: 58px;
+    margin-bottom: 5px;
+}
+
+.start-content h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.1;
+}
+
+.game-tagline {
+    margin: 12px 0 28px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    opacity: 0.85;
+}
+
+
+/* REGISTRATION CARD */
+
+.player-info-box {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 28px 32px;
+    box-sizing: border-box;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 24px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.18);
+
+    backdrop-filter: blur(8px);
+}
+
+
+/* REGISTRATION TITLE */
+
+.registration-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.registration-header > span {
+    font-size: 38px;
+}
+
+.registration-header h2 {
+    margin: 0;
+    font-size: 1.35rem;
+}
+
+.registration-header p {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+
+
+/* INPUTS */
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 13px 15px;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 1rem;
+
+    background: white;
+    color: #222;
+
+    outline: none;
+}
+
+.input-group input:focus {
+    box-shadow: 0 0 0 3px rgba(139, 207, 85, 0.35);
+}
+
+
+/* START BUTTON */
+
+.player-info-box .main-button {
+    width: 80%;
+    margin-top: 8px;
+    margin: 10px auto 0;
+    padding: 16px;
+    display: block;
+    border-radius: 14px;
+
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+
+/* ERROR */
+
+.player-info-error {
+    min-height: 20px;
+    margin: 5px 0;
+
+    font-size: 0.85rem;
+}
+
+/* =========================================
+   FARM + SIDE CHALLENGE LAYOUT
+========================================= */
+
+#farmScreen {
+    position: relative;
+}
+
+/* Keep the farm as the main area */
+#farmField {
+    width: calc(100% - 340px);
+    margin-left: 20px;
+    margin-right: 320px;
+}
+
+
+/* =========================================
+   SIDE PANEL FOR ALL EPISODES + REMEDIES
+========================================= */
+
+.episode-screen {
+    position: absolute !important;
+
+    top: 290px !important;
+    right: 25px !important;
+
+    left: auto !important;
+    bottom: auto !important;
+
+    width: 290px !important;
+    max-width: 290px !important;
+
+    margin: 0 !important;
+
+    transform: none !important;
+
+    z-index: 2000;
+
+    background: rgba(20, 55, 35, 0.96);
+
+    border: 2px solid rgba(139, 207, 85, 0.65);
+
+    border-radius: 18px;
+
+    padding: 18px;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.45);
+}
+
+
+/* Smaller episode card */
+
+.episode-screen .episode-card {
+    width: 100% !important;
+
+    padding: 5px !important;
+
+    margin: 0 !important;
+
+    box-sizing: border-box;
+
+    background: transparent !important;
+
+    border: none !important;
+
+    box-shadow: none !important;
+
+    text-align: center;
+}
+
+
+/* Episode title */
+
+.episode-screen h2 {
+    font-size: 1.25rem;
+
+    margin: 8px 0;
+}
+
+
+/* Description */
+
+.episode-screen p {
+    font-size: 0.82rem;
+
+    line-height: 1.4;
+
+    margin: 8px 0 14px;
+}
+
+
+/* Episode number */
+
+.episode-screen .episode-number {
+    font-size: 0.7rem;
+
+    letter-spacing: 2px;
+
+    opacity: 0.75;
+
+    margin-bottom: 5px;
+}
+
+
+/* =========================================
+   SIDE PANEL BUTTONS
+========================================= */
+
+.episode-screen button {
+    width: 100%;
+
+    margin: 6px 0;
+
+    padding: 10px 8px;
+
+    font-size: 0.78rem;
+
+    border-radius: 10px;
+
+    box-sizing: border-box;
+}
+
+
+/* Message */
+
+.episode-screen #pestMessage,
+.episode-screen #erosionMessage,
+.episode-screen #smokeMessage,
+.episode-screen #residueMessage {
+    font-size: 0.78rem;
+
+    line-height: 1.35;
+
+    min-height: 30px;
+}
+
+
+/* =========================================
+   CROP SELECTION
+========================================= */
+
+#cropScreen {
+    position: absolute !important;
+
+    top: 170px !important;
+    right: 25px !important;
+
+    left: auto !important;
+    bottom: auto !important;
+
+    width: 290px !important;
+    max-width: 290px !important;
+
+    margin: 0 !important;
+
+    transform: none !important;
+
+    z-index: 2000;
+}
+
+
+/* =========================================
+   RESIDUE MANAGEMENT SIDE PANEL
+========================================= */
+
+#residueScreen {
+    position: absolute !important;
+
+    top: 170px !important;
+    right: 25px !important;
+
+    left: auto !important;
+    bottom: auto !important;
+
+    width: 290px !important;
+    max-width: 290px !important;
+
+    margin: 0 !important;
+
+    transform: none !important;
+
+    z-index: 2000;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    #farmField {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .episode-screen,
+    #cropScreen,
+    #residueScreen {
+
+        position: fixed !important;
+
+        top: auto !important;
+        right: 10px !important;
+        bottom: 10px !important;
+        left: 10px !important;
+
+        width: auto !important;
+        max-width: none !important;
+    }
+}
+
+#erosionScreen {
+    position: absolute !important;
+
+    top: 290px !important;
+    right: 25px !important;
+    left: auto !important;
+    bottom: auto !important;
+
+    width: 290px !important;
+    max-width: 290px !important;
+
+    margin: 0 !important;
+    transform: none !important;
+
+    z-index: 2000 !important;
+}
+
+#smokeScreen {
+    position: absolute !important;
+
+    top: 290px !important;
+    right: 25px !important;
+    left: auto !important;
+    bottom: auto !important;
+
+    width: 290px !important;
+    max-width: 290px !important;
+
+    margin: 0 !important;
+    transform: none !important;
+
+    z-index: 2000 !important;
+}
+
+#residueScreen {
+    position: absolute !important;
+
+    top: 290px !important;
+    right: 25px !important;
+    left: auto !important;
+    bottom: auto !important;
+
+    width: 290px !important;
+    max-width: 290px !important;
+
+    margin: 0 !important;
+    transform: none !important;
+
+    z-index: 2000 !important;
+}
+
+/* =========================================
+   BIOMASS MINI-GAME PANEL
+   LEFT SIDE, BELOW STATS
+========================================= */
+
+#biomassPanel,
+#collectorUI,
+#biomassBaler {
+
+    position: fixed !important;
+
+    top: 290px !important;
+
+    right: auto !important;
+    bottom: auto !important;
+
+    width: 290px !important;
+    max-width: 290px !important;
+
+    box-sizing: border-box;
+
+    z-index: 2000 !important;
+}
+
+
+/* BIOMASS PANEL */
+
+#biomassPanel {
+
+    background: rgba(20, 55, 35, 0.96);
+
+    border: 2px solid rgba(139, 207, 85, 0.65);
+
+    border-radius: 18px;
+
+    padding: 18px;
+
+    color: white;
+
+    text-align: center;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.45);
+}
+
+
+/* BIOMASS BUTTON */
+
+#biomassPanel button {
+
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 11px;
+
+    border-radius: 10px;
+
+    font-size: 0.8rem;
+}
+
+
+/* BIOMASS PROGRESS */
+
+#biomassPanel .biomass-progress {
+
+    width: 100%;
+
+    margin: 10px 0;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   RESIDUE COLLECTOR
+========================================= */
+
+#collectorUI {
+
+    background: rgba(20, 55, 35, 0.96);
+
+    border: 2px solid rgba(139, 207, 85, 0.65);
+
+    border-radius: 18px;
+
+    padding: 16px;
+
+    color: white;
+
+    text-align: center;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================
+   BIOMASS BALER
+========================================= */
+
+#biomassBaler {
+
+    background: rgba(20, 55, 35, 0.96);
+
+    border: 2px solid rgba(139, 207, 85, 0.65);
+
+    border-radius: 18px;
+
+    padding: 16px;
+
+    color: white;
+
+    text-align: center;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.45);
+}
+
+
+#biomassBaler button {
+
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 10px;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   RIGHT-SIDE EPISODES
+========================================= */
+
+#episodeScreen,
+#erosionScreen,
+#smokeScreen,
+#residueScreen {
+
+    top: 290px !important;
+
+    z-index: 2000 !important;
+}
+
+
+/* =========================================
+   SMALL SCREENS
+========================================= */
+
+@media (max-width: 1000px) {
+
+    #biomassPanel,
+    #collectorUI,
+    #biomassBaler {
+        position: fixed !important;
+        top: 290px !important;
+        left: auto !important;
+        right: 30px !important;
+        width: 280px !important;
+        max-width: 280px !important;
+        z-index: 2000 !important;
+    }
+
+    #episodeScreen,
+    #erosionScreen,
+    #smokeScreen,
+    #residueScreen {
+
+        right: 10px !important;
+
+        width: 240px !important;
+        max-width: 240px !important;
+    }
+}
+
+/* FINAL FARM STATS */
+
+#finalStats h2 {
+    color: green !important;
+}
+
+#finalStats .final-stat {
+    color: white!important;
+    font-weight: 700;
+}
+
+#finalStats .final-stat span {
+    color: white !important;
+    font-weight: 800;
+}
+
+/* =========================================
+   CROP RESCUE AI ASSISTANT
+========================================= */
+
+#aiAssistant {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 10000;
+}
+
+
+/* FLOATING AI BUTTON */
+
+#aiChatButton {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+    border: 3px solid #8bcf55;
+
+    background: #174d2c;
+
+    color: white;
+
+    font-size: 27px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.4);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+#aiChatButton:hover {
+    transform: scale(1.08);
+    background: #246b3d;
+}
+
+
+/* CHAT WINDOW */
+
+#aiChatWindow {
+    display: none;
+
+    position: absolute;
+
+    right: 0;
+    bottom: 70px;
+
+    width: 330px;
+    height: 440px;
+
+    background: #102b1d;
+
+    border: 2px solid #8bcf55;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.55);
+}
+
+
+/* HEADER */
+
+.ai-chat-header {
+
+    height: 60px;
+
+    padding: 0 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: #174d2c;
+
+    color: white;
+}
+
+.ai-chat-header strong {
+    display: block;
+    font-size: 15px;
+}
+
+.ai-chat-header small {
+    display: block;
+    margin-top: 3px;
+    font-size: 11px;
+    opacity: 0.75;
+}
+
+
+.ai-close-button {
+
+    background: transparent;
+
+    border: none;
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+
+/* MESSAGES */
+
+#aiChatMessages {
+
+    height: 320px;
+
+    padding: 14px;
+
+    overflow-y: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+/* BOT MESSAGE */
+
+.ai-message {
+
+    max-width: 85%;
+
+    padding: 11px 13px;
+
+    border-radius: 14px;
+
+    font-size: 13px;
+
+    line-height: 1.45;
+}
+
+.bot-message {
+
+    align-self: flex-start;
+
+    background: #244c35;
+
+    color: white;
+
+    border-bottom-left-radius: 4px;
+}
+
+
+/* USER MESSAGE */
+
+.user-message {
+
+    align-self: flex-end;
+
+    background: #8bcf55;
+
+    color: #102b1d;
+
+    border-bottom-right-radius: 4px;
+}
+
+
+/* INPUT */
+
+.ai-chat-input {
+
+    height: 60px;
+
+    padding: 8px;
+
+    display: flex;
+
+    gap: 7px;
+
+    background: #0d2418;
+}
+
+.ai-chat-input input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 12px;
+
+    padding: 10px;
+
+    font-size: 13px;
+}
+
+.ai-chat-input button {
+
+    width: 42px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #8bcf55;
+
+    color: #102b1d;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    #aiAssistant {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    #aiChatWindow {
+        width: 290px;
+        height: 420px;
+    }
+}
+
+/* =========================================================
+   RESEARCH SECTION
+========================================================= */
+
+#researchSection {
+    width: 100%;
+    margin-top: 80px;
+    padding: 0 20px 80px;
+    box-sizing: border-box;
+    background:
+        linear-gradient(
+            180deg,
+            #071b12 0%,
+            #0b2619 35%,
+            #f4f8f2 35%,
+            #f4f8f2 100%
+        );
+}
+
+
+/* RESEARCH HERO */
+
+.research-hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 70px 30px 80px;
+    text-align: center;
+    color: white;
+}
+
+.research-icon {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.research-hero h1 {
+    margin: 0;
+    font-size: 42px;
+    font-weight: 800;
+}
+
+.research-hero p {
+    max-width: 650px;
+    margin: 15px auto 25px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #d7eadb;
+}
+
+.research-scroll-button {
+    border: none;
+    padding: 14px 26px;
+    border-radius: 30px;
+    background: #8cff42;
+    color: #0b2619;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    transition: 0.25s ease;
+}
+
+.research-scroll-button:hover {
+    transform: translateY(-3px);
+}
+
+
+/* MAIN CONTENT */
+
+.research-content {
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+
+/* RESEARCH CARDS */
+
+.research-card {
+    background: white;
+    border-radius: 22px;
+    padding: 32px;
+    margin-bottom: 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #dfe9df;
+}
+
+.research-card-title {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.research-card-title span {
+    font-size: 30px;
+    flex-shrink: 0;
+}
+
+.research-card-title h2 {
+    margin: 0;
+    color: #164d2d;
+    font-size: 25px;
+    line-height: 1.3;
+}
+
+.research-card p {
+    color: #38463d;
+    font-size: 16px;
+    line-height: 1.85;
+    margin: 0 0 16px;
+}
+
+.research-card p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* SCIENCE HIGHLIGHT */
+
+.science-highlight {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    background: #eef9e9;
+    border-left: 5px solid #72d43c;
+    padding: 20px;
+    border-radius: 14px;
+    margin: 22px 0;
+}
+
+.highlight-icon {
+    font-size: 30px;
+}
+
+.science-highlight strong {
+    color: #245c2e;
+    font-size: 18px;
+}
+
+.science-highlight p {
+    margin-top: 7px;
+}
+
+
+/* SOIL FACTS */
+
+.soil-facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.soil-fact {
+    background: #f2f8f0;
+    border-radius: 16px;
+    padding: 22px;
+    text-align: center;
+}
+
+.soil-fact span {
+    display: block;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.soil-fact strong {
+    display: block;
+    color: #245c2e;
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.soil-fact p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+/* RESEARCH NOTE */
+
+.research-note {
+    margin-top: 22px;
+    padding: 18px 20px;
+    border-radius: 14px;
+    background: #fff8df;
+    border-left: 5px solid #e8bd35;
+    color: #5e4d19;
+    line-height: 1.6;
+}
+
+
+/* ALTERNATIVES */
+
+.alternative-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.alternative-card {
+    padding: 24px;
+    background: #f4f9f3;
+    border: 1px solid #dcebdc;
+    border-radius: 17px;
+    transition: 0.25s ease;
+}
+
+.alternative-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(30, 90, 45, 0.1);
+}
+
+.alternative-icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.alternative-card h3 {
+    margin: 0 0 9px;
+    color: #164d2d;
+    font-size: 19px;
+}
+
+.alternative-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+
+/* GAME CONNECTION */
+
+.game-connection {
+    background:
+        linear-gradient(
+            135deg,
+            #f3faed,
+            #ffffff
+        );
+    border: 2px solid #a6df77;
+}
+
+.game-message {
+    margin-top: 22px;
+    padding: 20px;
+    background: #e7f7d9;
+    border-radius: 15px;
+    color: #24552c;
+    line-height: 1.7;
+}
+
+
+/* CONCLUSION */
+
+.conclusion-card {
+    border-top: 5px solid #69c83c;
+}
+
+
+/* SOURCES */
+
+.research-sources {
+    margin-top: 40px;
+    background: #102d1c;
+    border-radius: 24px;
+    padding: 35px;
+    color: white;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+}
+
+.sources-header {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.sources-header > span {
+    font-size: 38px;
+}
+
+.sources-header h2 {
+    margin: 0;
+    font-size: 26px;
+}
+
+.sources-header p {
+    margin: 5px 0 0;
+    color: #bcd5c3;
+}
+
+
+/* SOURCE CARDS */
+
+.source-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.source-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 17px;
+    background: #173b26;
+    border: 1px solid #2b5940;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.source-card:hover {
+    transform: translateY(-3px);
+    background: #1d4b2e;
+    border-color: #82d64c;
+}
+
+.source-card > span {
+    font-size: 27px;
+}
+
+.source-card div {
+    flex: 1;
+}
+
+.source-card strong {
+    display: block;
+    font-size: 15px;
+}
+
+.source-card small {
+    display: block;
+    margin-top: 4px;
+    color: #b8d1bf;
+    line-height: 1.4;
+}
+
+.source-card b {
+    font-size: 20px;
+    color: #8cff42;
+}
+
+
+/* FOOTER */
+
+.research-footer {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #31583e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #a9c4b0;
+}
+
+.research-footer span {
+    font-size: 22px;
+}
+
+.research-footer p {
+    margin: 0;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    #researchSection {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .research-hero {
+        padding: 50px 15px 60px;
+    }
+
+    .research-hero h1 {
+        font-size: 30px;
+    }
+
+    .research-hero p {
+        font-size: 15px;
+    }
+
+    .research-card {
+        padding: 22px;
+        border-radius: 18px;
+    }
+
+    .research-card-title h2 {
+        font-size: 21px;
+    }
+
+    .soil-facts,
+    .alternative-grid,
+    .source-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .research-sources {
+        padding: 24px;
+    }
+
+    .research-footer {
+        text-align: center;
+        flex-direction: column;
+    }
+}
+
+/* =========================
+   FOUNDERS SECTION
+========================= */
+
+#foundersSection {
+    width: 100%;
+    padding: 70px 20px 50px;
+    background: linear-gradient(
+        180deg,
+        #102d1c,
+        #0b2115
+    );
+    color: white;
+    text-align: center;
+}
+
+.founders-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+#foundersSection h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.founders-subtitle {
+    color: #cfe8d5;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+.founders-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.founder-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    padding: 28px 20px;
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.founder-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.founder-icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.founder-card h3 {
+    margin: 8px 0;
+    font-size: 20px;
+    color: white;
+}
+
+.founder-card p {
+    margin: 0;
+    color: #a8d5b3;
+    font-size: 14px;
+}
+
+.founders-footer {
+    margin-top: 45px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: #a8d5b3;
+    font-size: 14px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .founders-grid {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        margin: auto;
+    }
+
+    #foundersSection h2 {
+        font-size: 27px;
+    }
+
+}
