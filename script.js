@@ -2138,7 +2138,6 @@ function startMulchingGame() {
         }, { passive: false });
 
     });
-}
             function stopDragging() {
 
                 piece.style.cursor = "grab";
